@@ -8,60 +8,86 @@
 import SwiftUI
 
 struct BurgerContentView: View {
-    enum Screen {
-            case home
-            case items
-            case profile
-        }
+    @State private var selectedScreen = 0
 
-        @State private var selectedScreen: Screen = .home
-
-        var body: some View {
-            NavigationStack {
-                Group {
-                    switch selectedScreen {
-                    case .home:
-                        HomeView()
-                    case .items:
-                        ItemsView()
-                    case .profile:
-                        ProfileView()
-                    }
-                }
-                .navigationTitle(titleForScreen(selectedScreen))
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Menu {
-                            Button("Home", systemImage: "house") {
-                                selectedScreen = .home
-                            }
-
-                            Button("Items", systemImage: "list.bullet") {
-                                selectedScreen = .items
-                            }
-
-                            Button("Profile", systemImage: "person") {
-                                selectedScreen = .profile
-                            }
-                        } label: {
-                            Image(systemName: "line.3.horizontal")
-                        }
-                    }
+    var body: some View {
+        NavigationStack {
+            Group {
+                switch selectedScreen {
+                case 0:
+                    HomeView()
+                case 1:
+                    ItemsView()
+                case 2:
+                    ProfileView()
+                default:
+                    HomeView()
                 }
             }
-        }
+            .contentShape(Rectangle())
+            .gesture(
+                DragGesture(minimumDistance: 30)
+                    .onEnded { value in
+                        handleSwipe(value)
+                    }
+            )
+            .navigationTitle(titleForScreen(selectedScreen))
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        Button("Home", systemImage: "house") {
+                            selectedScreen = 0
+                        }
 
-        private func titleForScreen(_ screen: Screen) -> String {
-            switch screen {
-            case .home:
-                return "Home"
-            case .items:
-                return "Items"
-            case .profile:
-                return "Profile"
+                        Button("Items", systemImage: "list.bullet") {
+                            selectedScreen = 1
+                        }
+
+                        Button("Profile", systemImage: "person") {
+                            selectedScreen = 2
+                        }
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                    }
+                }
             }
         }
     }
+
+    private func titleForScreen(_ screen: Int) -> String {
+        switch screen {
+        case 0:
+            return "Home"
+        case 1:
+            return "Items"
+        case 2:
+            return "Profile"
+        default:
+            return "Home"
+        }
+    }
+
+    private func handleSwipe(_ value: DragGesture.Value) {
+        let horizontalAmount = value.translation.width
+        let verticalAmount = value.translation.height
+
+        guard abs(horizontalAmount) > abs(verticalAmount) else { return }
+
+        if horizontalAmount < -50 {
+            goToNextScreen()
+        } else if horizontalAmount > 50 {
+            goToPreviousScreen()
+        }
+    }
+
+    private func goToNextScreen() {
+        selectedScreen = min(selectedScreen + 1, 2)
+    }
+
+    private func goToPreviousScreen() {
+        selectedScreen = max(selectedScreen - 1, 0)
+    }
+}
 #Preview {
     BurgerContentView()
 }
