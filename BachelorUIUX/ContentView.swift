@@ -45,7 +45,7 @@ struct ContentView: View {
             )
             .navigationTitle("Home screen")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     Menu {
                         Button("Settings", systemImage: "gear") {
                         }
@@ -61,38 +61,6 @@ struct ContentView: View {
                 }
             }
         }
-    }
-}
-
-struct HomeView: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "house.fill")
-                .font(.system(size: 48))
-                .foregroundStyle(.tint)
-
-            Text("Home Screen")
-                .font(.title2)
-                .fontWeight(.semibold)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.systemBackground))
-    }
-}
-
-struct ItemsView: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "tray.full")
-                .font(.system(size: 48))
-                .foregroundStyle(.tint)
-
-            Text("Items Screen")
-                .font(.title2)
-                .fontWeight(.semibold)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.systemBackground))
     }
 }
 
