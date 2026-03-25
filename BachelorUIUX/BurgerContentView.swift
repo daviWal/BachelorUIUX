@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BurgerContentView: View {
+    var onBackToTestSelection: (() -> Void)? = nil
     @State private var selectedScreen = 0
 
     var body: some View {
@@ -19,7 +20,7 @@ struct BurgerContentView: View {
                 case 1:
                     ItemsView()
                 case 2:
-                    ProfileView()
+                    ProfileView(onBackToTestSelection: onBackToTestSelection)
                 default:
                     HomeView()
                 }

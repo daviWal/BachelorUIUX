@@ -23,11 +23,11 @@ struct ContentView: View {
             case .selection:
                 selectionView
             case .version1:
-                BurgerContentView()
+                BurgerContentView(onBackToTestSelection: { selectedVersion = .selection })
             case .version2:
-                TabBarContentView()
+                TabBarContentView(onBackToTestSelection: { selectedVersion = .selection })
             case .version3:
-                MainMenuContentView()
+                MainMenuContentView(onBackToTestSelection: { selectedVersion = .selection })
             }
         }
     }

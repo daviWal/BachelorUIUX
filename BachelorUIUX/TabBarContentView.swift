@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarContentView: View {
+    var onBackToTestSelection: (() -> Void)? = nil
     @State private var selectedTab = 0
     var body: some View {
         NavigationStack {
@@ -24,7 +25,7 @@ struct TabBarContentView: View {
                     }
                     .tag(1)
 
-                ProfileView()
+                ProfileView(onBackToTestSelection: onBackToTestSelection)
                     .tabItem {
                         Label("Profile", systemImage: "person")
                     }
