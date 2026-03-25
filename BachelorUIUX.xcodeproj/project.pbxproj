@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		199EB7A02F73EDAE00627803 /* README_Bachelor_Navigation_Project.md in Resources */ = {isa = PBXBuildFile; fileRef = 199EB79F2F73EDAE00627803 /* README_Bachelor_Navigation_Project.md */; };
 		199EB7A22F73EDEC00627803 /* CLAUDE_Bachelor_Project.md in Resources */ = {isa = PBXBuildFile; fileRef = 199EB7A12F73EDEC00627803 /* CLAUDE_Bachelor_Project.md */; };
-		199EB7BC2F73EE6900627803 /* .gitignore in Sources */ = {isa = PBXBuildFile; fileRef = 199EB7BB2F73EE6300627803 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +34,7 @@
 		1927F8FE2F6022EA005AAAF5 /* BachelorUIUXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BachelorUIUXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		199EB79F2F73EDAE00627803 /* README_Bachelor_Navigation_Project.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_Bachelor_Navigation_Project.md; sourceTree = "<group>"; };
 		199EB7A12F73EDEC00627803 /* CLAUDE_Bachelor_Project.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE_Bachelor_Project.md; sourceTree = "<group>"; };
-		199EB7BB2F73EE6300627803 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = .gitignore; sourceTree = "<group>"; };
+		199EB7BB2F73EE6300627803 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -84,13 +83,13 @@
 		1927F8DE2F6022E9005AAAF5 = {
 			isa = PBXGroup;
 			children = (
-				199EB7BB2F73EE6300627803 /* .gitignore */,
 				1927F8E92F6022E9005AAAF5 /* BachelorUIUX */,
 				1927F8F72F6022EA005AAAF5 /* BachelorUIUXTests */,
 				1927F9012F6022EA005AAAF5 /* BachelorUIUXUITests */,
 				1927F8E82F6022E9005AAAF5 /* Products */,
 				199EB79F2F73EDAE00627803 /* README_Bachelor_Navigation_Project.md */,
 				199EB7A12F73EDEC00627803 /* CLAUDE_Bachelor_Project.md */,
+				199EB7BB2F73EE6300627803 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
@@ -250,7 +249,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				199EB7BC2F73EE6900627803 /* .gitignore in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
