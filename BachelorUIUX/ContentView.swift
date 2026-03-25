@@ -27,7 +27,7 @@ struct ContentView: View {
             case .version2:
                 TabBarContentView()
             case .version3:
-                placeholderView
+                MainMenuContentView()
             }
         }
     }
