@@ -8,10 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
+    enum TestVersion {
+        case selection
+        case version1
+        case version2
+        case version3
+    }
+
+    @State private var selectedVersion: TestVersion = .selection
+
     var body: some View {
+        Group {
+            switch selectedVersion {
+            case .selection:
+                selectionView
+            case .version1:
+                BurgerContentView()
+            case .version2:
+                TabBarContentView()
+            case .version3:
+                placeholderView
+            }
+        }
+    }
+
+    private var selectionView: some View {
         NavigationStack {
             VStack(spacing: 20) {
-                NavigationLink(destination: BurgerContentView()) {
+                Button {
+                    selectedVersion = .version1
+                } label: {
                     Text("Version 1")
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -19,7 +45,9 @@ struct ContentView: View {
                         .cornerRadius(10)
                 }
 
-                NavigationLink(destination: TabBarContentView()) {
+                Button {
+                    selectedVersion = .version2
+                } label: {
                     Text("Version 2")
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -27,9 +55,9 @@ struct ContentView: View {
                         .cornerRadius(10)
                 }
 
-                Button(action: {
-                    // Placeholder – no navigation yet
-                }) {
+                Button {
+                    selectedVersion = .version3
+                } label: {
                     Text("Version 3")
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -40,6 +68,23 @@ struct ContentView: View {
             .padding()
             .navigationTitle("Select Test Version")
         }
+    }
+
+    private var placeholderView: some View {
+        VStack(spacing: 20) {
+            Text("Version 3")
+                .font(.largeTitle)
+                .bold()
+
+            Text("Not implemented yet")
+                .foregroundStyle(.secondary)
+
+            Button("Back to selection") {
+                selectedVersion = .selection
+            }
+            .padding(.top, 8)
+        }
+        .padding()
     }
 }
 
