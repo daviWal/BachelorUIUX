@@ -11,6 +11,10 @@ struct ProfileView: View {
 
     var onBackToTestSelection: (() -> Void)? = nil
 
+    @State private var name: String = "YOUR NAME"
+    @State private var email: String = "some@example.com"
+    @State private var activeAction: ProfileAction? = nil
+
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
@@ -19,22 +23,22 @@ struct ProfileView: View {
                         .font(.system(size: 72))
                         .foregroundStyle(.tint)
 
-                    Text("YOUR NAME")
+                    Text(name)
                         .font(.title2)
                         .fontWeight(.semibold)
 
-                    Text("some@example.com")
+                    Text(email)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
                 .padding(.top, 24)
 
                 VStack(spacing: 12) {
-                    profileRow(title: "Edit Profile", systemImage: "person")
-                    profileRow(title: "Account Settings", systemImage: "gear")
-                    profileRow(title: "Notifications", systemImage: "bell")
-                    profileRow(title: "Privacy", systemImage: "lock")
-                    profileRow(title: "Help & Support", systemImage: "questionmark.circle")
+                    profileRowButton(action: .editProfile,      systemImage: "person")
+                    profileRowButton(action: .accountSettings,  systemImage: "gear")
+                    profileRowButton(action: .notifications,    systemImage: "bell")
+                    profileRowButton(action: .privacy,          systemImage: "lock")
+                    profileRowButton(action: .helpAndSupport,   systemImage: "questionmark.circle")
                 }
 
                 VStack(spacing: 12) {
@@ -68,26 +72,34 @@ struct ProfileView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemBackground))
+        .sheet(item: $activeAction) { action in
+            ProfilePopupView(action: action, name: $name, email: $email)
+        }
     }
 
-    private func profileRow(title: String, systemImage: String) -> some View {
-        HStack(spacing: 12) {
-            Image(systemName: systemImage)
-                .frame(width: 24)
-                .foregroundStyle(.tint)
+    private func profileRowButton(action: ProfileAction, systemImage: String) -> some View {
+        Button {
+            activeAction = action
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: systemImage)
+                    .frame(width: 24)
+                    .foregroundStyle(.tint)
 
-            Text(title)
-                .foregroundStyle(.primary)
+                Text(action.rawValue)
+                    .foregroundStyle(.primary)
 
-            Spacer()
+                Spacer()
 
-            Image(systemName: "chevron.right")
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundStyle(.secondary)
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(.secondary)
+            }
+            .padding()
+            .background(Color(.secondarySystemBackground))
+            .cornerRadius(14)
         }
-        .padding()
-        .background(Color(.secondarySystemBackground))
-        .cornerRadius(14)
+        .buttonStyle(.plain)
     }
 
     private func handleExitAction() {
