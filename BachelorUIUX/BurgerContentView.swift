@@ -21,6 +21,10 @@ struct BurgerContentView: View {
                     ItemsView()
                 case 2:
                     ProfileView(onBackToTestSelection: onBackToTestSelection)
+                case 3:
+                    HelpView()
+                case 4:
+                    SettingsView()
                 default:
                     HomeView()
                 }
@@ -39,13 +43,17 @@ struct BurgerContentView: View {
                         Button("Home", systemImage: "house") {
                             selectedScreen = 0
                         }
-
-                        Button("Items", systemImage: "list.bullet") {
+                        Button("Items", systemImage: "tray.full") {
                             selectedScreen = 1
                         }
-
                         Button("Profile", systemImage: "person") {
                             selectedScreen = 2
+                        }
+                        Button("Help", systemImage: "questionmark.circle") {
+                            selectedScreen = 3
+                        }
+                        Button("Settings", systemImage: "gear") {
+                            selectedScreen = 4
                         }
                     } label: {
                         Image(systemName: "line.3.horizontal")
@@ -57,14 +65,12 @@ struct BurgerContentView: View {
 
     private func titleForScreen(_ screen: Int) -> String {
         switch screen {
-        case 0:
-            return "Home"
-        case 1:
-            return "Items"
-        case 2:
-            return "Profile"
-        default:
-            return "Home"
+        case 0: return "Home"
+        case 1: return "Items"
+        case 2: return "Profile"
+        case 3: return "Help"
+        case 4: return "Settings"
+        default: return "Home"
         }
     }
 
@@ -89,6 +95,7 @@ struct BurgerContentView: View {
         selectedScreen = max(selectedScreen - 1, 0)
     }
 }
+
 #Preview {
     BurgerContentView()
 }

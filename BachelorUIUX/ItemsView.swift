@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ItemsView: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "tray.full")
-                .font(.system(size: 48))
-                .foregroundStyle(.tint)
+    private let items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
 
-            Text("Items Screen")
-                .font(.title2)
-                .fontWeight(.semibold)
+    var body: some View {
+        List(items, id: \.self) { item in
+            NavigationLink(destination: DetailView(itemTitle: item).navigationTitle(item)) {
+                Label(item, systemImage: "doc.text")
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemBackground))
+    }
+}
+
+#Preview {
+    NavigationStack {
+        ItemsView()
+            .navigationTitle("Items")
     }
 }

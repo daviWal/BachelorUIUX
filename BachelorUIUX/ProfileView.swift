@@ -13,7 +13,8 @@ struct ProfileView: View {
 
     @State private var name: String = "YOUR NAME"
     @State private var email: String = "some@example.com"
-    @State private var activeAction: ProfileAction? = nil
+    @State private var sheetAction: ProfileAction? = nil
+    @State private var alertAction: ProfileAction? = nil
 
     var body: some View {
         ScrollView {
@@ -72,14 +73,26 @@ struct ProfileView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemBackground))
-        .sheet(item: $activeAction) { action in
+        .sheet(item: $sheetAction) { action in
             ProfilePopupView(action: action, name: $name, email: $email)
+        }
+        .alert(alertAction?.rawValue ?? "", isPresented: Binding(
+            get: { alertAction != nil },
+            set: { if !$0 { alertAction = nil } }
+        )) {
+            Button("OK") { alertAction = nil }
+        } message: {
+            Text("\(alertAction?.rawValue ?? "") was tapped.")
         }
     }
 
     private func profileRowButton(action: ProfileAction, systemImage: String) -> some View {
         Button {
-            activeAction = action
+            if action == .editProfile {
+                sheetAction = action
+            } else {
+                alertAction = action
+            }
         } label: {
             HStack(spacing: 12) {
                 Image(systemName: systemImage)

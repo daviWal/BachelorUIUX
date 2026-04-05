@@ -21,6 +21,10 @@ struct MainMenuContentView: View {
                     ItemsView()
                 case 2:
                     ProfileView(onBackToTestSelection: onBackToTestSelection)
+                case 3:
+                    HelpView()
+                case 4:
+                    SettingsView()
                 default:
                     mainMenuView
                 }
@@ -49,9 +53,6 @@ struct MainMenuContentView: View {
 
     private var mainMenuView: some View {
         VStack(spacing: 20) {
-
-
-
             Image(systemName: "house.fill")
                 .font(.system(size: 60))
                 .foregroundColor(.blue)
@@ -60,12 +61,8 @@ struct MainMenuContentView: View {
                 .font(.title)
                 .bold()
 
-
-
             VStack(spacing: 16) {
-                Button {
-                    selectedScreen = 1
-                } label: {
+                Button { selectedScreen = 1 } label: {
                     Label("Items", systemImage: "tray.full")
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -73,13 +70,27 @@ struct MainMenuContentView: View {
                         .cornerRadius(14)
                 }
 
-                Button {
-                    selectedScreen = 2
-                } label: {
+                Button { selectedScreen = 2 } label: {
                     Label("Profile", systemImage: "person")
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.green.opacity(0.15))
+                        .cornerRadius(14)
+                }
+
+                Button { selectedScreen = 3 } label: {
+                    Label("Help", systemImage: "questionmark.circle")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.orange.opacity(0.15))
+                        .cornerRadius(14)
+                }
+
+                Button { selectedScreen = 4 } label: {
+                    Label("Settings", systemImage: "gear")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.gray.opacity(0.15))
                         .cornerRadius(14)
                 }
             }
@@ -89,14 +100,12 @@ struct MainMenuContentView: View {
 
     private func titleForScreen(_ screen: Int) -> String {
         switch screen {
-        case 0:
-            return "Home"
-        case 1:
-            return "Items"
-        case 2:
-            return "Profile"
-        default:
-            return "Home"
+        case 0: return "Home"
+        case 1: return "Items"
+        case 2: return "Profile"
+        case 3: return "Help"
+        case 4: return "Settings"
+        default: return "Home"
         }
     }
 
