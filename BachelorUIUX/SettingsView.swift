@@ -2,6 +2,8 @@
 //  SettingsView.swift
 //  BachelorUIUX
 //
+//  Created by David Walitza on 02.04.2026.
+//
 
 import SwiftUI
 

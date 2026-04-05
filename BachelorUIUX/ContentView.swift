@@ -16,6 +16,8 @@ struct ContentView: View {
     }
 
     @State private var selectedVersion: TestVersion = .selection
+    @State private var showModerator = false
+    @StateObject private var sessionManager = SessionManager()
 
     var body: some View {
         Group {
@@ -23,12 +25,24 @@ struct ContentView: View {
             case .selection:
                 selectionView
             case .version1:
-                BurgerContentView(onBackToTestSelection: { selectedVersion = .selection })
+                BurgerContentView(onBackToTestSelection: {
+                    sessionManager.endSession()
+                    selectedVersion = .selection
+                })
             case .version2:
-                TabBarContentView(onBackToTestSelection: { selectedVersion = .selection })
+                TabBarContentView(onBackToTestSelection: {
+                    sessionManager.endSession()
+                    selectedVersion = .selection
+                })
             case .version3:
-                MainMenuContentView(onBackToTestSelection: { selectedVersion = .selection })
+                MainMenuContentView(onBackToTestSelection: {
+                    sessionManager.endSession()
+                    selectedVersion = .selection
+                })
             }
+        }
+        .sheet(isPresented: $showModerator) {
+            ModeratorView(sessionManager: sessionManager)
         }
     }
 
@@ -36,6 +50,7 @@ struct ContentView: View {
         NavigationStack {
             VStack(spacing: 20) {
                 Button {
+                    sessionManager.startSession(variant: "Version 1")
                     selectedVersion = .version1
                 } label: {
                     Text("Version 1")
@@ -46,6 +61,7 @@ struct ContentView: View {
                 }
 
                 Button {
+                    sessionManager.startSession(variant: "Version 2")
                     selectedVersion = .version2
                 } label: {
                     Text("Version 2")
@@ -56,6 +72,7 @@ struct ContentView: View {
                 }
 
                 Button {
+                    sessionManager.startSession(variant: "Version 3")
                     selectedVersion = .version3
                 } label: {
                     Text("Version 3")
@@ -64,27 +81,37 @@ struct ContentView: View {
                         .background(Color.gray.opacity(0.2))
                         .cornerRadius(10)
                 }
+
+                Spacer()
+
+                HStack(spacing: 16) {
+                    Button {
+                        showModerator = true
+                    } label: {
+                        Label("Moderator", systemImage: "person.badge.clock")
+                            .font(.footnote)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 12)
+                            .background(Color.indigo.opacity(0.12))
+                            .cornerRadius(10)
+                    }
+
+                    Button(role: .destructive) {
+                        sessionManager.reset()
+                    } label: {
+                        Label("Reset", systemImage: "arrow.counterclockwise")
+                            .font(.footnote)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 12)
+                            .background(Color.red.opacity(0.10))
+                            .cornerRadius(10)
+                    }
+                }
+                .padding(.bottom, 8)
             }
             .padding()
             .navigationTitle("Select Test Version")
         }
-    }
-
-    private var placeholderView: some View {
-        VStack(spacing: 20) {
-            Text("Version 3")
-                .font(.largeTitle)
-                .bold()
-
-            Text("Not implemented yet")
-                .foregroundStyle(.secondary)
-
-            Button("Back to selection") {
-                selectedVersion = .selection
-            }
-            .padding(.top, 8)
-        }
-        .padding()
     }
 }
 
