@@ -42,20 +42,6 @@ struct ProfileView: View {
                     profileRowButton(action: .helpAndSupport,   systemImage: "questionmark.circle")
                 }
 
-                VStack(spacing: 12) {
-                    Button {
-                        handleExitAction()
-                    } label: {
-                        Label("Log Out", systemImage: "rectangle.portrait.and.arrow.right")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.red.opacity(0.12))
-                            .foregroundStyle(.red)
-                            .cornerRadius(14)
-                    }
-                }
-                .padding(.top, 8)
-
                 Spacer(minLength: 20)
 
                 Button {
