@@ -45,6 +45,11 @@
 			path = BachelorUIUXUITests;
 			sourceTree = "<group>";
 		};
+		19DACD412F86407D00E36707 /* Documentation */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Documentation;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 		1927F8DE2F6022E9005AAAF5 = {
 			isa = PBXGroup;
 			children = (
+				19DACD412F86407D00E36707 /* Documentation */,
 				1927F8E92F6022E9005AAAF5 /* BachelorUIUX */,
 				1927F8F72F6022EA005AAAF5 /* BachelorUIUXTests */,
 				1927F9012F6022EA005AAAF5 /* BachelorUIUXUITests */,
@@ -109,6 +115,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				1927F8E92F6022E9005AAAF5 /* BachelorUIUX */,
+				19DACD412F86407D00E36707 /* Documentation */,
 			);
 			name = BachelorUIUX;
 			packageProductDependencies = (
