@@ -8,6 +8,12 @@
 import Foundation
 import Combine
 
+enum UploadStatus {
+    case uploading
+    case uploaded
+    case failed
+}
+
 struct VariantSession: Identifiable {
     let id = UUID()
     let variant: String
@@ -24,8 +30,10 @@ class SessionManager: ObservableObject {
     @Published var participantID: String = ""
     @Published var ageGroup: String = "Gen Z"
     @Published var sessions: [VariantSession] = []
+    @Published var uploadStatuses: [UUID: UploadStatus] = [:]
 
     private var activeSession: VariantSession?
+    private let uploader = SheetsUploader()
 
     /// Call when the participant taps a version button.
     func startSession(variant: String) {
@@ -40,7 +48,20 @@ class SessionManager: ObservableObject {
         guard var session = activeSession else { return }
         session.endTime = Date()
         sessions.append(session)
+        uploadStatuses[session.id] = .uploading
         activeSession = nil
+
+        let pid = participantID
+        let ag  = ageGroup
+        Task {
+            do {
+                try await uploader.appendRow(participantID: pid, ageGroup: ag, session: session)
+                await MainActor.run { self.uploadStatuses[session.id] = .uploaded }
+            } catch {
+                print("[SheetsUploader] Upload failed: \(error)")
+                await MainActor.run { self.uploadStatuses[session.id] = .failed }
+            }
+        }
     }
 
     /// Active variant name, if a session is currently running.
@@ -52,6 +73,7 @@ class SessionManager: ObservableObject {
     func reset() {
         activeSession = nil
         sessions = []
+        uploadStatuses = [:]
         participantID = ""
         ageGroup = "Gen Z"
     }

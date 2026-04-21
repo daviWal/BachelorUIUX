@@ -1,6 +1,6 @@
 # BachelorUIUX — App Documentation
 
-**Version:** 1.0
+**Version:** 1.1
 **Platform:** iOS (iPhone)
 **Tech Stack:** Swift 5.0 / SwiftUI
 **Minimum iOS:** 26.2
@@ -28,11 +28,12 @@ The thesis investigates how age influences navigation strategy, perceived clarit
 ### What the app does
 - Presents three distinct navigation variants, each routing to the same set of target screens
 - Tracks time spent inside each variant per participant
-- Provides a moderator interface for session management, labeling, and CSV export
+- Automatically uploads each completed session row to a Google Sheets spreadsheet in the background
+- Provides a moderator interface for session management, labeling, upload status monitoring, and CSV export
 - Resets cleanly between participants
 
 ### What the app does NOT do
-- No real backend, no authentication, no persistent user accounts
+- No real backend, no persistent user accounts
 - No real data behind Items, Profile, Settings, or Help — all content is placeholder
 - No automatic task detection (e.g. no recognition of "task completed")
 - No audio or screen recording (handled externally by the moderator)
@@ -204,10 +205,31 @@ The app automatically records one `VariantSession` entry per navigation variant 
 - Think-aloud speech (captured via external audio/video recording)
 
 ### Storage and export
-Data is held in memory only (`SessionManager`, an in-memory `ObservableObject`). Nothing is written to disk automatically. The moderator exports via the iOS Share sheet (CSV format) at the end of each session. Data is not anonymized by the app — participant IDs should be assigned by the researcher using a separate anonymization key.
+
+**Primary — automatic Google Sheets upload:**
+The moment a participant taps "Back to Test Selection", `SessionManager.endSession()` fires a background upload to a configured Google Sheets spreadsheet. The row is appended silently without interrupting the session flow. The Moderator view shows a cloud icon next to each completed session:
+
+| Icon | Meaning |
+|---|---|
+| Blue (uploading) | Upload in progress |
+| Green (checkmark) | Row successfully written to the sheet |
+| Red (exclamation) | Upload failed — use CSV export as fallback |
+
+All participant data accumulates in one spreadsheet across all testing days, making cross-participant comparison straightforward.
+
+**Fallback — CSV export:**
+The Export button in the Moderator view remains available. It generates a CSV via the iOS Share sheet covering all sessions recorded in the current app session. Use this if the upload icons are red or if the device has no internet connection.
+
+**In-memory state:**
+`SessionManager` is an in-memory `ObservableObject`. The in-app session list is lost if the app is terminated. The Google Sheet is the persistent record — export CSV additionally if working in a low-connectivity environment.
+
+**Credentials:**
+Upload credentials are stored in `SheetsConfig.swift`, which is excluded from version control via `.gitignore`. The file must be present on the device's build for uploads to work.
+
+Data is not anonymized by the app — participant IDs should be assigned by the researcher using a separate anonymization key.
 
 ### Reset behavior
-Tapping Reset on the selection screen clears all in-memory session data including participant ID, age group, and all logged variant sessions. The app returns to a clean state ready for the next participant.
+Tapping Reset on the selection screen clears all in-memory session data including participant ID, age group, and all logged variant sessions. It does not affect rows already written to the Google Sheet. The app returns to a clean state ready for the next participant.
 
 ---
 
@@ -219,9 +241,9 @@ Tapping Reset on the selection screen clears all in-memory session data includin
 3. Participant taps a version button — timer starts automatically
 4. Participant completes assigned tasks within that variant using think-aloud protocol
 5. Moderator observes; notes errors, hesitations, verbal statements
-6. Participant taps **Back to Test Selection** when done — timer stops automatically
+6. Participant taps **Back to Test Selection** when done — timer stops automatically and the session row is uploaded to Google Sheets in the background
 7. Repeat steps 3–6 for additional variants if testing multiple
-8. Moderator opens Moderator view and exports CSV
+8. Moderator opens Moderator view — confirm all session rows show a green cloud icon (uploaded successfully); use Export CSV as a backup if any show red
 9. Moderator taps Reset before the next participant
 
 ### Recording
@@ -253,7 +275,10 @@ If participants test multiple variants in the same session on the same device, l
 The app does not automatically detect wrong taps, dead ends, or incorrect paths. These must be observed and noted manually by the moderator. This limits data precision but was chosen to keep the app simple and stable.
 
 **In-memory only:**
-If the app is backgrounded for too long, iOS may terminate it, losing all session data. Export CSV immediately after each session.
+If the app is backgrounded for too long, iOS may terminate it, losing the in-app session list. However, any rows that were already uploaded to Google Sheets before termination are safe. Export CSV after each participant as an additional backup.
+
+**Requires network connectivity:**
+Automatic upload to Google Sheets requires an active internet connection. If the device is offline, the cloud icon turns red and the row will not appear in the sheet. In this case, use the CSV export as the primary data source. Test network connectivity before each session.
 
 **Same content visible to all participants:**
 The placeholder names ("YOUR NAME", "Item 1–5") are neutral but not personalized. Participants are asked to imagine the app as their own. This framing requires moderator guidance to be consistent across sessions.
@@ -266,7 +291,7 @@ The placeholder names ("YOUR NAME", "Item 1–5") are neutral but not personaliz
 - **Language:** Swift 5.0
 - **UI framework:** SwiftUI only (no UIKit)
 - **Minimum deployment:** iOS 26.2
-- **Dependencies:** None (no external packages, no CocoaPods, no SPM dependencies)
+- **Dependencies:** No Swift packages or CocoaPods. The Google Sheets integration uses only `URLSession` (Foundation) and `SecKeyCreateSignature` (Security framework) — both built into iOS.
 - **Project format:** Xcode 26.3, `PBXFileSystemSynchronizedRootGroup` (filesystem-synced groups — adding files to the `BachelorUIUX/` folder is sufficient; no manual project.pbxproj edits needed)
 
 ### Architecture
@@ -293,8 +318,11 @@ BachelorUIUX/
 ├── HelpView.swift              — shared destination
 ├── SettingsView.swift          — shared destination
 └── Moderator/
-    ├── SessionManager.swift    — ObservableObject, session data and CSV export
-    └── ModeratorView.swift     — researcher-only sheet
+    ├── SessionManager.swift    — ObservableObject, session data, CSV export, upload trigger
+    ├── ModeratorView.swift     — researcher-only sheet, shows upload status icons
+    ├── SheetsUploader.swift    — Google Sheets API client (JWT signing, OAuth2, REST calls)
+    └── SheetsConfig.swift      — spreadsheet ID and service account credentials
+                                  (gitignored — never committed to version control)
 ```
 
 ### Known issues
@@ -332,8 +360,12 @@ No names, contact information, audio, video, or biometric data is stored by the 
 ### Anonymization
 Participant IDs are assigned by the researcher using an external anonymization key. The app itself does not link IDs to real identities. The exported CSV file contains only the ID, age group, and timing data.
 
-### Data persistence
-All data is held in memory only. It is exported manually via the iOS Share sheet and is never transmitted over a network. If the app is closed without exporting, all data for that session is lost.
+### Data persistence and transmission
+Session data is automatically uploaded to a private Google Sheets spreadsheet after each variant ends. This transmission is encrypted (HTTPS) and authenticated via a service account private key. Only the researcher's Google account has access to the spreadsheet.
+
+The data transmitted per row is limited to: participant ID, age group, variant name, start timestamp, end timestamp, and duration in seconds. No device identifiers, IP addresses, or personal data beyond what the moderator enters are sent.
+
+The iOS Share sheet CSV export transmits data only to destinations the moderator explicitly selects (e.g. their own email or cloud storage). If the app is closed without exporting and without a successful upload, data for that session is lost.
 
 ### Consent
 Informed consent should be obtained before each session, covering:

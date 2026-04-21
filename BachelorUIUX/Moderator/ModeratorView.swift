@@ -59,10 +59,13 @@ struct ModeratorView: View {
                                 }
                             }
                             Spacer()
-                            if let dur = session.duration {
-                                Text(formatDuration(dur))
-                                    .monospacedDigit()
-                                    .foregroundStyle(.green)
+                            HStack(spacing: 6) {
+                                if let dur = session.duration {
+                                    Text(formatDuration(dur))
+                                        .monospacedDigit()
+                                        .foregroundStyle(.green)
+                                }
+                                uploadIcon(for: session.id)
                             }
                         }
                     }
@@ -85,6 +88,23 @@ struct ModeratorView: View {
                     .disabled(sessionManager.sessions.isEmpty)
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    private func uploadIcon(for id: UUID) -> some View {
+        switch sessionManager.uploadStatuses[id] {
+        case .uploading:
+            Image(systemName: "icloud.and.arrow.up")
+                .foregroundStyle(.blue)
+        case .uploaded:
+            Image(systemName: "checkmark.icloud")
+                .foregroundStyle(.green)
+        case .failed:
+            Image(systemName: "exclamationmark.icloud")
+                .foregroundStyle(.red)
+        case nil:
+            EmptyView()
         }
     }
 
