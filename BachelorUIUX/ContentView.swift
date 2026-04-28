@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var selectedVersion: TestVersion = .selection
     @State private var showModerator = false
     @StateObject private var sessionManager = SessionManager()
+    @StateObject private var itemStore = ItemStore()
 
     var body: some View {
         Group {
@@ -41,6 +42,7 @@ struct ContentView: View {
                 })
             }
         }
+        .environmentObject(itemStore)
         .sheet(isPresented: $showModerator) {
             ModeratorView(sessionManager: sessionManager)
         }

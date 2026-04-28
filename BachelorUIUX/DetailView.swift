@@ -8,35 +8,121 @@
 import SwiftUI
 
 struct DetailView: View {
-    let itemTitle: String
+    let itemID: Int
+    @EnvironmentObject var itemStore: ItemStore
+
+    @State private var showEditSheet     = false
+    @State private var showStatusPicker  = false
+
+    private var item: AppItem? {
+        itemStore.items.first { $0.id == itemID }
+    }
+
+    private static let dateFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateStyle = .medium
+        f.timeStyle = .none
+        return f
+    }()
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Image(systemName: "doc.text.fill")
-                    .font(.system(size: 64))
-                    .foregroundStyle(.tint)
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 16)
+        Group {
+            if let item {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
 
-                Text(itemTitle)
-                    .font(.title2)
-                    .fontWeight(.semibold)
+                        // Icon
+                        Image(systemName: "doc.text.fill")
+                            .font(.system(size: 64))
+                            .foregroundStyle(.tint)
+                            .frame(maxWidth: .infinity)
+                            .padding(.top, 16)
 
-                Text("This is the detail view for \(itemTitle). Here you would find more information about this item, including descriptions, metadata, and any actions you can take.")
-                    .foregroundStyle(.secondary)
+                        // Name
+                        Text(item.name)
+                            .font(.title2)
+                            .fontWeight(.semibold)
 
-                Divider()
+                        // Description
+                        Text(item.description)
+                            .foregroundStyle(.secondary)
 
-                VStack(alignment: .leading, spacing: 12) {
-                    detailRow(label: "Category", value: "General")
-                    detailRow(label: "Status", value: "Active")
-                    detailRow(label: "Last updated", value: "Today")
+                        Divider()
+
+                        // Metadata
+                        VStack(alignment: .leading, spacing: 12) {
+                            // Status — tappable
+                            Button {
+                                showStatusPicker = true
+                            } label: {
+                                HStack {
+                                    Text("Status")
+                                        .foregroundStyle(.secondary)
+                                    Spacer()
+                                    HStack(spacing: 4) {
+                                        Text(item.status.rawValue)
+                                            .fontWeight(.medium)
+                                            .foregroundStyle(statusColor(item.status))
+                                        Image(systemName: "chevron.up.chevron.down")
+                                            .font(.caption2)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+                            }
+                            .buttonStyle(.plain)
+
+                            detailRow(
+                                label: "Last Updated",
+                                value: Self.dateFormatter.string(from: item.lastUpdated)
+                            )
+                            detailRow(
+                                label: "Created",
+                                value: Self.dateFormatter.string(from: item.createdDate)
+                            )
+                        }
+                    }
+                    .padding()
                 }
+                .background(Color(.systemBackground))
+                .navigationTitle(item.name)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        HStack(spacing: 16) {
+                            // Favourite toggle
+                            Button {
+                                itemStore.toggleFavorite(id: itemID)
+                            } label: {
+                                Image(systemName: item.isFavorite ? "star.fill" : "star")
+                                    .foregroundStyle(item.isFavorite ? .yellow : .secondary)
+                                    .animation(.easeInOut(duration: 0.2), value: item.isFavorite)
+                            }
+                            // Edit
+                            Button {
+                                showEditSheet = true
+                            } label: {
+                                Image(systemName: "pencil")
+                            }
+                        }
+                    }
+                }
+                .sheet(isPresented: $showEditSheet) {
+                    ItemEditView(itemID: itemID)
+                        .environmentObject(itemStore)
+                }
+                .confirmationDialog("Change Status", isPresented: $showStatusPicker, titleVisibility: .visible) {
+                    ForEach(ItemStatus.allCases) { status in
+                        Button(status.rawValue) {
+                            itemStore.setStatus(id: itemID, status: status)
+                        }
+                    }
+                    Button("Cancel", role: .cancel) {}
+                }
+            } else {
+                Text("Item not found.")
+                    .foregroundStyle(.secondary)
             }
-            .padding()
         }
-        .background(Color(.systemBackground))
     }
 
     private func detailRow(label: String, value: String) -> some View {
@@ -48,11 +134,19 @@ struct DetailView: View {
                 .fontWeight(.medium)
         }
     }
+
+    private func statusColor(_ status: ItemStatus) -> Color {
+        switch status {
+        case .active:   return .green
+        case .draft:    return .orange
+        case .archived: return .secondary
+        }
+    }
 }
 
 #Preview {
     NavigationStack {
-        DetailView(itemTitle: "Item 1")
-            .navigationTitle("Item 1")
+        DetailView(itemID: 0)
+            .environmentObject(ItemStore())
     }
 }

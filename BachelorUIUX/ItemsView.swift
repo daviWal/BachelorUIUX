@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct ItemsView: View {
-    private let items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
+    @EnvironmentObject var itemStore: ItemStore
 
     var body: some View {
-        List(items, id: \.self) { item in
-            NavigationLink(destination: DetailView(itemTitle: item).navigationTitle(item)) {
-                Label(item, systemImage: "doc.text")
+        List(itemStore.items) { item in
+            NavigationLink(destination: DetailView(itemID: item.id)) {
+                HStack {
+                    Label(item.name, systemImage: "doc.text")
+                    Spacer()
+                    if item.isFavorite {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.yellow)
+                            .font(.caption)
+                    }
+                }
             }
         }
         .background(Color(.systemBackground))
@@ -24,5 +32,6 @@ struct ItemsView: View {
     NavigationStack {
         ItemsView()
             .navigationTitle("Items")
+            .environmentObject(ItemStore())
     }
 }

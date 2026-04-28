@@ -24,7 +24,7 @@ struct SettingsView: View {
                 Toggle("Location Access", isOn: $locationEnabled)
             }
             Section("About") {
-                LabeledContent("Version", value: "1.0")
+                LabeledContent("Version", value: "1.2")
                 LabeledContent("Build", value: "1")
             }
         }

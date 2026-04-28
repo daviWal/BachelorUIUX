@@ -1,6 +1,6 @@
 # BachelorUIUX — App Documentation
 
-**Version:** 1.1
+**Version:** 1.2
 **Platform:** iOS (iPhone)
 **Tech Stack:** Swift 5.0 / SwiftUI
 **Minimum iOS:** 26.2
@@ -31,6 +31,7 @@ The thesis investigates how age influences navigation strategy, perceived clarit
 - Automatically uploads each completed session row to a Google Sheets spreadsheet in the background
 - Provides a moderator interface for session management, labeling, upload status monitoring, and CSV export
 - Resets cleanly between participants
+- Provides interactive item detail screens (edit name/description, toggle favorite, change status) to give participants meaningful in-screen tasks beyond navigation
 
 ### What the app does NOT do
 - No real backend, no persistent user accounts
@@ -139,7 +140,12 @@ All three navigation variants give access to the same five screens:
 
 **Key principle:** Every target screen is reachable through every navigation variant. The path differs; the destination does not.
 
-**Detail View:** Accessible only from Items, via a `NavigationLink` list. Shares the `NavigationStack` of the active container.
+**Detail View:** Accessible only from Items, via a `NavigationLink` list. Shares the `NavigationStack` of the active container. The detail screen shows the item's name, description, status, last-updated date, and creation date. It supports three interactive actions:
+- **Edit** (pencil button, toolbar) — opens a sheet to rename the item and edit its description; saving stamps the "Last Updated" date to the current time
+- **Favorite** (star button, toolbar) — toggles the favorite flag; favorited items show a yellow star in the Items list
+- **Status** (tap the Status row) — opens a confirmation dialog to switch between Active, Archived, and Draft
+
+All item changes persist within the session via a shared `ItemStore`. Changes are lost when the app is reset between participants.
 
 **Profile interactions:** Edit Profile opens a full sheet with editable name and email fields. All other profile rows (Account Settings, Notifications, Privacy, Help & Support) show an alert confirming the tap — they are intentionally not implemented as these features are outside the scope of the study.
 
@@ -156,13 +162,16 @@ The following tasks are recommended for participant sessions. Each task has an i
 | 3 | Open your Profile | Home | Profile screen visible | Most prominent target across all variants |
 | 4 | Open the detail view of any item | Home | Detail view of any item | Tests multi-step navigation (Home → Items → Detail) |
 | 5 | Edit your profile name | Profile | Edit Profile sheet open | Tests in-screen interaction, not navigation |
-| 6 | Return to the test selection screen | Any screen | Selection screen | Tests back/exit navigation |
+| 6 | Rename an item | Items → Detail | Edit sheet saved | Tests toolbar discoverability + sheet interaction |
+| 7 | Mark an item as a favorite | Items → Detail | Star filled, item starred in list | Tests icon-button interaction in toolbar |
+| 8 | Change the status of an item | Items → Detail | Status row updated | Tests tappable metadata row + confirmation dialog |
+| 9 | Return to the test selection screen | Any screen | Selection screen | Tests back/exit navigation |
 
 **Multiple solutions:**
 Tasks 1–4 may be solved via either the primary navigation control or the hidden swipe gesture. If a participant discovers and uses swipe navigation, this should be noted by the moderator as it is analytically relevant.
 
 **Difficulty gradient:**
-Tasks 1–2 test direct single-step navigation. Task 4 requires two steps. Task 6 tests knowledge of the exit path, which is only accessible from Profile (via "Back to Test Selection").
+Tasks 1–2 test direct single-step navigation. Task 4 requires two steps. Tasks 6–8 test in-screen interactions within the Detail view — they are accessible only after successfully completing task 4. Task 9 tests knowledge of the exit path, which is only accessible from Profile (via "Back to Test Selection").
 
 ---
 
@@ -298,21 +307,26 @@ The placeholder names ("YOUR NAME", "Item 1–5") are neutral but not personaliz
 `ContentView` acts as the root coordinator. It holds:
 - A `TestVersion` enum state that switches between the selection screen and the three container views
 - A `SessionManager` (`@StateObject`) that survives variant switches
+- An `ItemStore` (`@StateObject`) injected into the environment via `.environmentObject(itemStore)`, making it available to all destination screens across all three variants
 
-Each navigation variant is a self-contained SwiftUI `View` that owns its own `@State private var selectedScreen`. There is no shared navigation state between variants. The only shared state is the `SessionManager`, passed down via a callback pattern (`onBackToTestSelection`) rather than through the environment, to keep coupling explicit and minimal.
+Each navigation variant is a self-contained SwiftUI `View` that owns its own `@State private var selectedScreen`. There is no shared navigation state between variants. `SessionManager` is passed via a callback pattern (`onBackToTestSelection`); `ItemStore` travels via the SwiftUI environment so no changes to the three container files were needed.
+
+**ItemStore:** A shared `ObservableObject` that holds five pre-loaded `AppItem` values with staggered creation and last-updated dates. Mutations (rename, favorite toggle, status change) are published via `@Published var items`, causing all observing views to update automatically. The store is reset only when the moderator taps Reset — item changes made during a variant session persist if the participant switches variants.
 
 **Navigation model:** Each container wraps content in a `NavigationStack`. Screen switches within a variant replace the content of a `Group` inside that stack. Detail views pushed via `NavigationLink` (e.g. from `ItemsView`) use the container's stack naturally.
 
 ### File structure
 ```
 BachelorUIUX/
-├── ContentView.swift           — root coordinator, version selection
+├── ContentView.swift           — root coordinator, version selection, ItemStore injection
 ├── BurgerContentView.swift     — Version 1: hamburger menu
 ├── TabBarContentView.swift     — Version 2: tab bar
 ├── MainMenuContentView.swift   — Version 3: content buttons
 ├── HomeView.swift              — shared destination
-├── ItemsView.swift             — shared destination (list → detail)
-├── DetailView.swift            — shared destination (pushed via NavigationLink)
+├── ItemsView.swift             — shared destination (list → detail, shows favorite star)
+├── DetailView.swift            — shared destination (edit, favorite, status, metadata)
+├── ItemStore.swift             — AppItem model, ItemStatus enum, ItemStore ObservableObject
+├── ItemEditView.swift          — edit sheet for item name and description
 ├── ProfileView.swift           — shared destination (with inline interactions)
 ├── ProfilePopupView.swift      — Edit Profile sheet + ProfileAction enum
 ├── HelpView.swift              — shared destination
@@ -344,6 +358,9 @@ Ensuring the three navigation variants are comparable is the most critical metho
 
 ### What to watch for
 If a destination screen is modified, verify the change is visually and functionally identical in all three variants before conducting user tests. A screen that is accidentally harder to use in one variant will confound results.
+
+**Note on DetailView interactivity:**
+`DetailView` now contains interactive elements (pencil button, star button, tappable status row). These are in-screen interactions, not navigation — they do not vary across the three variants. All participants see the same detail screen regardless of which navigation version they are using. This preserves experimental validity: the navigation path to the detail screen differs per variant, but everything inside it is identical.
 
 ---
 
