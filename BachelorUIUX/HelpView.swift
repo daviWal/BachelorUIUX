@@ -20,6 +20,10 @@ struct HelpView: View {
                     answer: "Access your profile through the navigation menu or tab bar."
                 )
             }
+            Section("Items"){
+                helpRow(question: "How do i edit an item?", answer: "Open the detail view of an item. There you can see its status which you can change by tapping it, or change its name by tapping the pencil icon on the top.")
+                helpRow(question: "How do i add an item to favorites?", answer: "Open the detail view of an item, then tap the star icon on the top.")
+            }
             Section("Account") {
                 helpRow(
                     question: "How do I edit my profile?",
@@ -27,7 +31,7 @@ struct HelpView: View {
                 )
                 helpRow(
                     question: "How do I change my settings?",
-                    answer: "Open the Settings screen from the navigation menu."
+                    answer: "Open the Settings screen from the navigation menu. Then press any of the switches."
                 )
             }
             Section("Contact") {
