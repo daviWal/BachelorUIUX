@@ -153,25 +153,35 @@ All item changes persist within the session via a shared `ItemStore`. Changes ar
 
 ## 5. Task Design
 
-The following tasks are recommended for participant sessions. Each task has an identical start point (the relevant version's home screen) and a clearly defined success state.
+The study uses four main tasks (A–D) that all participants complete in every version. Optional scenario tasks exist for extended sessions. Task design is governed by the Moderator Script (Version 1.0).
 
-| # | Task | Start | Target | Notes |
+### Main Tasks
+
+| Task | Instruction | Start | Success State | Type |
 |---|---|---|---|---|
-| 1 | Find the Help section | Home | Help screen visible | Tests primary navigation discoverability |
-| 2 | Open Settings | Home | Settings screen visible | Tests whether all destinations are findable |
-| 3 | Open your Profile | Home | Profile screen visible | Most prominent target across all variants |
-| 4 | Open the detail view of any item | Home | Detail view of any item | Tests multi-step navigation (Home → Items → Detail) |
-| 5 | Edit your profile name | Profile | Edit Profile sheet open | Tests in-screen interaction, not navigation |
-| 6 | Rename an item | Items → Detail | Edit sheet saved | Tests toolbar discoverability + sheet interaction |
-| 7 | Mark an item as a favorite | Items → Detail | Star filled, item starred in list | Tests icon-button interaction in toolbar |
-| 8 | Change the status of an item | Items → Detail | Status row updated | Tests tappable metadata row + confirmation dialog |
-| 9 | Return to the test selection screen | Any screen | Selection screen | Tests back/exit navigation |
+| A — Find Help | "Please find where you would get help in the app." | Home | Help screen visible | 1-step / interpretive |
+| B — Find Settings | "Please find where you can change app settings." | Home | Settings screen visible | 1-step / interpretive |
+| C — Open Item 3 | "Please find the list of items and open Item 3." | Home | Detail view of Item 3 visible | 2-step |
+| D — Edit Item 3 | "Please find Item 3 and change its name." | Home | Edit sheet for Item 3 open | Multi-step / navigation + in-screen action |
 
-**Multiple solutions:**
-Tasks 1–4 may be solved via either the primary navigation control or the hidden swipe gesture. If a participant discovers and uses swipe navigation, this should be noted by the moderator as it is analytically relevant.
+**Task D dependency:** Task D requires the participant to first navigate to the Item 3 detail view (same path as Task C). If Task C was not completed successfully, the moderator navigates to Item 3 before starting Task D timing and records Task C as a failure.
 
-**Difficulty gradient:**
-Tasks 1–2 test direct single-step navigation. Task 4 requires two steps. Tasks 6–8 test in-screen interactions within the Detail view — they are accessible only after successfully completing task 4. Task 9 tests knowledge of the exit path, which is only accessible from Profile (via "Back to Test Selection").
+**Success definition for Task D:** Success is counted when the participant reaches the edit interface for Item 3, not when typing is complete. This keeps the metric focused on navigation and toolbar discoverability, not typing skill. Opening the wrong item's edit view counts as partial success (wrong target).
+
+**Multiple solutions:** Tasks A–C may be solved via either the primary navigation control or the hidden swipe gesture. Swipe-based solutions must be recorded separately under Gesture Discovery (see Section 7).
+
+**Difficulty gradient:** Tasks A and B are single-step navigation. Task C is two-step (navigation to Items → select Item 3). Task D adds a third step (toolbar → edit sheet), testing toolbar discoverability on top of navigation.
+
+### Optional Scenario Tasks
+
+Use only if session time allows, or in a pilot round. Do not mix all optional tasks into a single 20–25 minute session.
+
+| Scenario | Instruction | Success State |
+|---|---|---|
+| 1 — Help need | "Imagine you are stuck in the app and need help. Where would you go?" | Help screen visible |
+| 2 — App behavior | "Imagine you want the app to behave differently. Where would you go?" | Settings screen visible |
+| 3 — Item browsing | "Imagine you want to look through the items and open one in more detail." | Any item detail view visible |
+| 4 — Personal data | "Imagine you want to change something about your personal information. Where would you go?" | Profile screen or Edit Profile interface visible |
 
 ---
 
@@ -213,6 +223,33 @@ The app automatically records one `VariantSession` entry per navigation variant 
 - Wrong turns or error paths (observed and noted manually by moderator)
 - Think-aloud speech (captured via external audio/video recording)
 
+### Manually collected metrics (moderator observation sheet)
+
+The following metrics are recorded by the moderator on paper during each task, for each version:
+
+| Metric | Definition | Scale |
+|---|---|---|
+| Task success | Participant reaches defined success state without moderator guidance | 2 = success / 1 = partial / 0 = failure |
+| Time on task | Seconds from end of task instruction to success state or give-up | Seconds (approximate if needed) |
+| Wrong turns | Intentional taps that move away from the expected route | Count per task |
+| Hesitation | Visible pause before action | 0 = none (<2s) / 1 = mild (3–5s) / 2 = strong (>5s) |
+| Navigation path | Sequence of taps taken | Free text (e.g. "Tab bar → Settings") |
+| Gesture discovery | Whether participant attempts or discovers hidden swipe navigation | 0 = no attempt / 1 = accidental / 2 = intentional / 3 = discovered and reused |
+
+**Wrong turn definition:** Counts intentional taps that change screen and move away from the target. Does not count looking without tapping, scrolling that does not change screen, reading labels, or accidental touches immediately self-corrected.
+
+**Gesture discovery note:** If a participant discovers the swipe gesture in one version, the moderator notes whether they transfer it to subsequent versions. This is analytically relevant regardless of which task it occurs during.
+
+Per-version subjective ratings (collected after each version via post-test questions):
+
+| Rating | Question | Scale |
+|---|---|---|
+| Perceived ease | "How easy was this version to navigate?" | 1 (very difficult) – 5 (very easy) |
+| Confidence | "How confident did you feel navigating this version?" | 1 (not at all) – 5 (very confident) |
+| Frustration | "Did anything feel confusing or frustrating?" | Yes/No + optional 1–5 rating |
+
+Verbal observations (think-aloud quotes, especially around visibility, labels, icons, uncertainty, expectations, and comparisons to familiar apps) are noted in free text on the observation sheet.
+
 ### Storage and export
 
 **Primary — automatic Google Sheets upload:**
@@ -244,16 +281,43 @@ Tapping Reset on the selection screen clears all in-memory session data includin
 
 ## 8. Experimental Setup Integration
 
+### Counterbalanced version order
+
+To reduce learning and order effects, the sequence of navigation versions is counterbalanced across participants using a Latin Square rotation:
+
+| Group | Order |
+|---|---|
+| A | Version 1 → Version 2 → Version 3 |
+| B | Version 2 → Version 3 → Version 1 |
+| C | Version 3 → Version 1 → Version 2 |
+
+Assignment: P01 = A, P02 = B, P03 = C, P04 = A, P05 = B, P06 = C, and so on. Apply the same rotation independently within each age group where possible.
+
 ### Session flow
+
+**Before handing over the device:**
 1. Moderator opens the app and taps **Moderator** to enter participant ID and age group
-2. Moderator hands device to participant
-3. Participant taps a version button — timer starts automatically
-4. Participant completes assigned tasks within that variant using think-aloud protocol
-5. Moderator observes; notes errors, hesitations, verbal statements
-6. Participant taps **Back to Test Selection** when done — timer stops automatically and the session row is uploaded to Google Sheets in the background
-7. Repeat steps 3–6 for additional variants if testing multiple
-8. Moderator opens Moderator view — confirm all session rows show a green cloud icon (uploaded successfully); use Export CSV as a backup if any show red
-9. Moderator taps Reset before the next participant
+2. Moderator reads introduction script aloud (study purpose, prototype framing, no right/wrong answers)
+3. Moderator reads think-aloud instruction aloud
+4. Moderator reads consent script aloud; records consent answer; stops session if participant declines
+5. Moderator asks pre-test questions (app usage habits, smartphone confidence, exploration style)
+6. Moderator hands device to participant
+
+**Per version (repeat for each of the three versions):**
+
+7. Participant taps the version button for this session's assigned version — timer starts automatically
+8. Moderator gives tasks one at a time (A, B, C, D); participant completes each using think-aloud protocol
+9. Moderator observes and records metrics on observation sheet: success score, time, wrong turns, hesitation, navigation path, gesture discovery, key quotes
+10. Participant taps **Back to Test Selection** when the moderator signals the version is complete — timer stops automatically and the session row is uploaded to Google Sheets in the background
+11. Moderator asks per-version post-test questions (ease, confidence, frustration) and records answers
+12. Repeat steps 7–11 for the next version in the assigned order
+
+**After all three versions:**
+
+13. Moderator asks final comparison questions (preference, easiest, most confusing, real-world preference)
+14. Moderator opens Moderator view — confirm all three session rows show a green cloud icon; use Export CSV as a backup if any show red
+15. Moderator reads closing script aloud
+16. Moderator taps Reset before the next participant
 
 ### Recording
 The app does not perform screen or audio recording. External recording (screen mirroring to a Mac, or a second camera on a tripod) is recommended for capturing:
@@ -261,11 +325,18 @@ The app does not perform screen or audio recording. External recording (screen m
 - Hesitation moments
 - Think-aloud comments
 
-### Moderation style
-Moderated sessions with a think-aloud protocol are assumed. The moderator should not guide the participant toward the correct navigation path. Encouragement to keep thinking aloud is appropriate; hints about where to tap are not.
+### Moderation rules
+The moderator must not guide the participant toward the correct navigation path. The only permitted prompt during tasks is: *"Please keep thinking aloud."*
+
+Not permitted:
+- Saying where to tap
+- Naming or pointing to navigation elements
+- Explaining the meaning of icons
+- Correcting wrong turns immediately
+- Comparing versions while the participant is still testing
 
 ### Device
-Testing should be conducted on a physical iPhone in portrait orientation. Do not use an iPad (the layout is optimized for phone dimensions) and do not test on a simulator (swipe gesture behavior differs).
+Testing must be conducted on a physical iPhone in portrait orientation. Do not use an iPad (the layout is optimized for phone dimensions) and do not test on a simulator (swipe gesture behavior differs).
 
 ---
 
