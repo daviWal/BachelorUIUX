@@ -1,0 +1,676 @@
+MODERATORSKRIPT — USABILITY-STUDIE MOBILE NAVIGATION
+Bachelorarbeit: Mobile App-Navigation im Generationsvergleich
+
+Version: 2.0
+Zweck: Standardisiertes Testskript und Metriken-Framework
+Zielgruppen: Generation Z und Personen im Alter von 50 bis 65 Jahren
+Geschätzte Sitzungsdauer: ca. 10 bis 20 Minuten pro Teilnehmende:r
+
+============================================================
+1. STUDIENÜBERBLICK
+============================================================
+
+Forschungsfokus:
+Diese Studie untersucht, wie Nutzende unterschiedlicher Altersgruppen
+verschiedene mobile Navigationskonzepte verstehen, nutzen und bewerten.
+
+Die Studie vergleicht drei Navigationsvarianten:
+
+Version 1 - Hamburger-Menü
+Die Navigation ist hinter einem Menüsymbol verborgen.
+
+Version 2 - Tab Bar
+Eine dauerhaft sichtbare Navigationsleiste am unteren Bildschirmrand.
+
+Version 3 - Content-Navigation / Direkte Schaltflächen
+Die Navigation erscheint als große Schaltflächen auf dem Startbildschirm.
+
+Wichtiger methodischer Grundsatz:
+Alle drei Versionen enthalten dieselben Bildschirme und Inhalte.
+Nur die Navigationsstruktur unterscheidet sich.
+
+Der Moderator / die Moderatorin darf das Navigationskonzept keiner
+Version vor dem Test erklären. 
+
+============================================================
+2. GEGENBALANCIERTE VERSIONSREIHENFOLGE
+============================================================
+
+Um Lern- und Reihenfolgeeffekte zu reduzieren, beginnen nicht alle
+Teilnehmenden mit derselben Version. Es wird folgendes Latin-Square-
+Verfahren verwendet:
+
+Gruppe A: Version 1 -> Version 2 -> Version 3
+Gruppe B: Version 2 -> Version 3 -> Version 1
+Gruppe C: Version 3 -> Version 1 -> Version 2
+
+Empfohlene Zuteilung:
+P01 = Gruppe A
+P02 = Gruppe B
+P03 = Gruppe C
+P04 = Gruppe A
+P05 = Gruppe B
+P06 = Gruppe C
+Muster wird fortgesetzt.
+
+Wichtig:
+Die Zuteilung wird innerhalb beider Altersgruppen separat angewendet.
+
+============================================================
+3. EINFÜHRUNGSSCRIPT DES MODERATORS / DER MODERATORIN
+============================================================
+
+Bitte laut vorlesen, bevor der Test beginnt:
+
+"Vielen Dank für Ihre Teilnahme.
+Dies ist ein kurzer Usability-Test mit einem App-Prototyp.
+Das Ziel ist nicht, Sie zu testen, sondern zu verstehen, wie Menschen
+durch verschiedene App-Strukturen navigieren.
+Es gibt keine richtigen oder falschen Antworten.
+Wenn etwas verwirrend wirkt, ist das wertvolle Information für die
+Studie.
+
+Die App ist ein Prototyp - einige Inhalte und Funktionen sind
+vereinfacht.
+Die Sitzung dauert ca. 10 bis 20 Minuten.
+Ich werde Ihnen die Aufgaben einzeln nacheinander vorlesen.
+Bitte versuchen Sie, jede Aufgabe so natürlich wie möglich zu
+bearbeiten."
+
+============================================================
+4. ANWEISUNG ZUM LAUTEN DENKEN (THINK-ALOUD)
+============================================================
+
+Bitte laut vorlesen:
+
+"Bitte sagen Sie während der Nutzung der App laut, was Sie denken.
+Zum Beispiel: Was suchen Sie gerade? Was erwarten Sie? Was ist
+unklar?
+Ich werde Sie nicht zur richtigen Antwort führen, aber ich werde Sie
+gegebenenfalls daran erinnern, weiterzusprechen."
+
+Erlaubte Moderatoraufforderung während der Aufgaben:
+"Bitte denken Sie weiter laut."
+
+Nicht erlaubt:
+- Nicht sagen, wohin getippt werden soll.
+- Keine Navigationselemente benennen oder darauf zeigen.
+- Keine Erklärung von Icon-Bedeutungen.
+- Fehlnavigationen nicht sofort korrigieren.
+- Versionen nicht vergleichen, solange die Testperson noch testet.
+
+============================================================
+5. EINVERSTÄNDNISERKLÄRUNG
+============================================================
+
+Bitte laut vorlesen:
+
+"Ich werde während der Sitzung Notizen machen.
+Die App selbst erfasst ausschließlich Zeitdaten pro Version.
+Sofern eine Bildschirm- oder Audioaufnahme erfolgt, wird diese
+ausschließlich für die Analyse im Rahmen dieser Bachelorarbeit
+genutzt.
+Ihr Name wird nicht in den App-Daten gespeichert.
+Sie können den Test jederzeit ohne Angabe von Gründen abbrechen."
+
+Anschließend das schriftliche Einverständnisformular vorlegen
+und um Unterschrift bitten:
+
+"Bitte lesen Sie die Einverständniserklärung durch und
+unterschreiben Sie, wenn Sie mit der Teilnahme einverstanden sind."
+
+Ergebnis notieren:
+[ ] Schriftliche Einverständniserklärung erteilt (Unterschrift liegt vor)
+[ ] Abgelehnt - Sitzung beendet
+
+Bei Ablehnung: Sitzung beenden.
+
+============================================================
+6. VORBEFRAGUNG
+============================================================
+
+Vor der Geräteübergabe stellen:
+
+F1. Welche Art von Apps nutzen Sie am häufigsten?
+Notizen:
+____________________________________________________________
+____________________________________________________________
+
+F2. Wie sicher fühlen Sie sich im Umgang mit Smartphones?
+Skala: 1 = überhaupt nicht sicher, 5 = sehr sicher
+
+1    2    3    4    5
+
+Gewählter Wert: ______
+
+F3. Was machen Sie in einer neuen App als Erstes?
+Auswählen oder beschreiben:
+[ ] Ich schaue nach sichtbaren Buttons oder Beschriftungen
+[ ] Ich erkunde und tippe herum
+[ ] Ich nutze Menüs oder Icons, die ich bereits kenne
+[ ] Ich frage jemanden um Hilfe
+[ ] Sonstiges: ___________________________________________
+
+F4. Nutzen Sie häufig Wischgesten in Apps?
+[ ] Ja, häufig
+[ ] Manchmal
+[ ] Selten
+[ ] Nein / nicht sicher
+
+Notizen:
+____________________________________________________________
+
+============================================================
+7. AUFGABENSET
+============================================================
+
+Wichtig:
+- Eine Aufgabe nach der anderen vorlesen.
+- Die vollständige Aufgabenliste nicht zeigen.
+- Jede Version startet am Startbildschirm der jeweiligen Variante.
+- Alle fünf Aufgaben werden in jeder Version durchgeführt.
+- Reihenfolge der Aufgaben innerhalb einer Sitzung nicht ändern.
+
+------------------------------------------------------------
+AUFGABE A - HILFE FINDEN
+------------------------------------------------------------
+
+Anweisung an die Testperson (laut vorlesen):
+"Bitte finden Sie den Bereich, in dem Sie Hilfe zur App erhalten
+würden."
+
+Aufgabentyp: Interpretativ / 1-stufig
+Erfolgszustand: Hilfe-Bildschirm ist sichtbar.
+Primäre Metrik: Findet die Testperson den Hilfebereich ohne Anleitung?
+
+Moderatorhinweise:
+- Beobachten, ob die Testperson zuerst sichtbare Optionen scannt.
+- Version 1: Erkennt die Testperson das Hamburger-Symbol?
+- Version 2: Nutzt die Testperson die untere Tab-Leiste?
+- Version 3: Nutzt die Testperson die große Hilfe-Schaltfläche?
+
+------------------------------------------------------------
+AUFGABE B - EINSTELLUNGEN FINDEN
+------------------------------------------------------------
+
+Anweisung an die Testperson (laut vorlesen):
+"Bitte finden Sie den Bereich, in dem Sie die App-Einstellungen
+ändern können."
+
+Aufgabentyp: Interpretativ / 1-stufig
+Erfolgszustand: Einstellungs-Bildschirm ist sichtbar.
+Primäre Metrik: Kann die Testperson die App-Konfiguration finden?
+
+Moderatorhinweise:
+- Auf Verwechslung von Profil und Einstellungen achten.
+- Liest die Testperson alle Optionen, bevor sie tippt?
+- Wird die Beschriftung "Einstellungen" sofort verstanden?
+
+------------------------------------------------------------
+AUFGABE B.2 - PROFIL BEARBEITEN
+------------------------------------------------------------
+
+Anweisung an die Testperson (laut vorlesen):
+"Bearbeiten Sie bitte Ihren Profilnamen
+(Aktualisieren Sie Ihre Informationen)."
+
+Aufgabentyp: 2-stufig / Navigation + Aktion im Bildschirm
+Erfolgszustand: Der Bearbeitungsprompt erscheint; der Name wurde
+geändert und auf "Speichern" gedrückt.
+Primäre Metrik: Kann die Testperson zum Profil navigieren und eine
+Bearbeitungsaktion abschließen?
+
+Moderatorhinweise:
+- Verwechselt die Testperson Profil mit Einstellungen?
+- Ist die Bearbeitungsaktion innerhalb des Profils auffindbar?
+- Wird die Schaltfläche "Speichern" gefunden und gedrückt?
+
+------------------------------------------------------------
+AUFGABE C - ITEM 3 ÖFFNEN
+------------------------------------------------------------
+
+Anweisung an die Testperson (laut vorlesen):
+"Bitte finden Sie die Liste der Items und öffnen Sie Item 3."
+
+Aufgabentyp: Spezifisch / 2-stufig
+Erfolgszustand: Detailansicht von Item 3 ist sichtbar.
+Primäre Metrik: Kann die Testperson eine Liste navigieren und ein
+benanntes Ziel auswählen?
+
+Moderatorhinweise:
+- Fehlnavigationen vor dem Erreichen des Item-Bereichs notieren.
+- Versteht die Testperson, dass Item 3 im Items-Bereich liegt?
+- Verursacht die Rücknavigation nach dem Öffnen der Detailansicht
+  Verwirrung?
+
+------------------------------------------------------------
+AUFGABE D - ITEM 3 UMBENENNEN
+------------------------------------------------------------
+
+Anweisung an die Testperson (laut vorlesen):
+"Bitte finden Sie Item 3 und ändern Sie dessen Namen."
+
+Aufgabentyp: Spezifisch / mehrstufig / Navigation + Aktion
+Erfolgszustand: Die Bearbeitungsansicht von Item 3 ist geöffnet.
+
+Empfohlene Erfolgsdefinition:
+Erfolg = Testperson erreicht die Bearbeitungsoberfläche von Item 3.
+Abschluss der Texteingabe ist nicht erforderlich.
+
+Primäre Metrik: Kann die Testperson von der Navigation in eine
+tiefer liegende objektspezifische Aktion wechseln?
+
+Moderatorhinweise:
+- Diese Aufgabe testet Navigationstiefe, nicht Tippfähigkeit.
+- Item 3 gefunden, aber Bearbeiten nicht gefunden: Teilerfolg.
+- Falsches Item bearbeitet: falsches Ziel, Teilerfolg.
+- Ist die Bearbeitungsfunktion sichtbar, erwartet oder überraschend?
+- Aufgabe D setzt Aufgabe C voraus: Gelingt C nicht, navigiert der
+  Moderator / die Moderatorin die Testperson manuell zur Detailansicht,
+  bevor die Zeitmessung für D beginnt. Aufgabe C wird als Misserfolg
+  gewertet.
+
+============================================================
+8. OPTIONALE SZENARIOAUFGABEN
+============================================================
+
+Nur verwenden, wenn die Sitzungszeit ausreicht oder in einem
+Pilotdurchlauf. Nicht alle fünf Hauptaufgaben und alle Szenarien
+in einer kurzen Sitzung kombinieren - das führt zu Erschöpfung,
+insbesondere bei der Gruppe 50-65.
+
+Szenario 1 - Hilfebedarf
+Anweisung:
+"Stellen Sie sich vor, Sie kommen in der App nicht weiter und
+brauchen Hilfe. Wo würden Sie nachschauen?"
+Erfolgszustand: Hilfe-Bildschirm sichtbar.
+
+Szenario 2 - App-Verhalten
+Anweisung:
+"Stellen Sie sich vor, Sie möchten das Verhalten der App ändern.
+Wo würden Sie das einstellen?"
+Erfolgszustand: Einstellungs-Bildschirm sichtbar.
+
+Szenario 3 - Items durchsuchen
+Anweisung:
+"Stellen Sie sich vor, Sie möchten die Items durchsehen und eines
+genauer anschauen."
+Erfolgszustand: Eine beliebige Item-Detailansicht ist sichtbar.
+
+Szenario 4 - Persönliche Daten
+Anweisung:
+"Stellen Sie sich vor, Sie möchten etwas an Ihren persönlichen
+Informationen ändern. Wo würden Sie das tun?"
+Erfolgszustand: Profil-Bildschirm oder Profil-Bearbeitungsansicht
+sichtbar.
+
+============================================================
+9. METRIKEN-FRAMEWORK
+============================================================
+
+Folgende Definitionen konsequent bei allen Teilnehmenden und
+Versionen verwenden.
+
+------------------------------------------------------------
+9.1 AUFGABENERFOLG
+------------------------------------------------------------
+
+Erfolg = Testperson erreicht den definierten Erfolgszustand ohne
+Anleitung durch den Moderator / die Moderatorin.
+
+Teilerfolg = Testperson erreicht den richtigen Hauptbereich, aber
+nicht den finalen Zielzustand.
+Beispiele:
+- Items geöffnet, aber nicht Item 3.
+- Item 3 geöffnet, aber Bearbeiten nicht gefunden.
+- Profil geöffnet, aber Profil bearbeiten nicht geöffnet.
+
+Misserfolg = Testperson erreicht den Zielzustand nicht oder bricht ab.
+
+Bewertung:
+2 = Erfolg
+1 = Teilerfolg
+0 = Misserfolg
+
+------------------------------------------------------------
+9.2 AUFGABENZEIT
+------------------------------------------------------------
+
+Zeitmessung beginnt, wenn der Moderator / die Moderatorin die
+Aufgabenanweisung fertig vorgelesen hat.
+Zeitmessung endet, wenn der Erfolgszustand erreicht wird oder die
+Testperson aufgibt.
+
+Zeit in Sekunden notieren. Falls nur ungefähre Angaben möglich sind,
+als "ca." kennzeichnen.
+
+------------------------------------------------------------
+9.3 FEHLNAVIGATIONEN
+------------------------------------------------------------
+
+Eine Fehlnavigation ist jedes intentionale Tippen, das die Testperson
+vom erwarteten Navigationspfad entfernt.
+
+Beispiele:
+- Auf Profil tippen, während nach Einstellungen gesucht wird.
+- Hilfe öffnen, während nach Items gesucht wird.
+- Item 2 statt Item 3 öffnen.
+
+Nicht zählen:
+- Schauen ohne Tippen.
+- Scrollen, das den Bildschirm nicht wechselt.
+- Beschriftungen lesen.
+- Versehentliches Tippen, das die Testperson sofort selbst korrigiert.
+
+Anzahl der Fehlnavigationen pro Aufgabe notieren.
+
+------------------------------------------------------------
+9.4 ZÖGERN
+------------------------------------------------------------
+
+Zögern ist eine sichtbare Pause vor einer Aktion.
+
+0 = Kein Zögern
+    Testperson handelt innerhalb von ca. 2 Sekunden.
+
+1 = Kurzes Zögern
+    Testperson pausiert ca. 3-5 Sekunden, scannt die Oberfläche
+    oder äußert einen kurzen Unsicherheitsausdruck.
+
+2 = Starkes Zögern
+    Testperson pausiert mehr als 5 Sekunden, scannt wiederholt,
+    verbalisiert Verwirrung oder wirkt orientierungslos.
+
+Die Einstufung erfolgt durch den Moderator / die Moderatorin anhand
+des Think-Aloud-Protokolls und der Videoaufzeichnung. Eine
+automatische Echtzeitzeitmessung einzelner Handlungspausen ist nicht
+vorgesehen.
+
+Beispiele für Zögerungssprache:
+- "Wo ist das?"
+- "Ich weiß nicht, wohin."
+- "Vielleicht hier?"
+- "Das würde ich woanders erwarten."
+
+------------------------------------------------------------
+9.5 WAHRGENOMMENE LEICHTIGKEIT UND SICHERHEITSGEFÜHL
+------------------------------------------------------------
+
+Wird über die Nachbefragung pro Version erfasst (siehe Abschnitt 10):
+
+Leichtigkeit:       "Wie leicht fiel Ihnen die Navigation?" (1-5)
+Sicherheitsgefühl:  "Wie sicher haben Sie sich gefühlt?" (1-5)
+
+Werte nach jeder Version im Beobachtungsbogen notieren.
+
+------------------------------------------------------------
+9.6 VERWIRRUNG UND FRUSTRATION
+------------------------------------------------------------
+
+Werden als zwei separate Konstrukte über die Nachbefragung pro
+Version erfasst (siehe Abschnitt 10):
+
+Verwirrung:   "Wie verwirrend fanden Sie die Navigation?" (1-5)
+Frustration:  "Wie frustrierend fanden Sie die Navigation?" (1-5)
+
+Beide werden auf einer 1-5-Skala bewertet. Ein Navigationselement
+kann als unklar empfunden werden, ohne zwingend emotionale Frustration
+auszulösen; die getrennte Erfassung ermöglicht eine unabhängige
+Analyse.
+
+Zusätzliche qualitative Details werden erfasst über:
+"Gab es konkrete Elemente oder Momente, die verwirrend oder
+frustrierend waren?" (Ja/Nein + Beschreibung)
+
+------------------------------------------------------------
+9.7 NAVIGATIONSPFAD
+------------------------------------------------------------
+
+Verwendeten Hauptpfad notieren.
+
+Beispiele:
+- Hamburger-Menü -> Hilfe
+- Tab-Leiste -> Einstellungen
+- Hauptmenü-Schaltfläche -> Items -> Item 3
+- Wischgeste -> Items -> Item 3
+- Fehlpfad: Profil -> Startseite -> Items -> Item 3
+
+Pfadnotizen:
+____________________________________________________________
+____________________________________________________________
+
+------------------------------------------------------------
+9.8 ENTDECKUNG DER WISCHGESTE
+------------------------------------------------------------
+
+Die App enthält eine nicht angezeigte horizontale Wischgeste zwischen
+den Bereichen Home, Items und Profile. Vor dem Test nicht erklären.
+
+Notieren, ob die Testperson Wischgesten entdeckt oder versucht:
+
+0 = Kein Wischversuch
+1 = Unbeabsichtigter Versuch - erkennbar daran, dass die Person
+    unmittelbar nach der Geste irritiert reagiert, keinen Zusammenhang
+    zur Navigation herstellt und die Geste nicht wiederholt
+2 = Gezielter Versuch
+3 = Geste entdeckt und erneut verwendet
+
+Falls die Testperson die Geste in einer Version entdeckt: notieren,
+ob sie in späteren Versionen übertragen wird.
+
+Notizen:
+____________________________________________________________
+____________________________________________________________
+
+------------------------------------------------------------
+9.9 VERBALE BEOBACHTUNGEN
+------------------------------------------------------------
+
+Wichtige Aussagen der Testperson während der Aufgaben notieren.
+Besonders auf Kommentare zu folgenden Themen achten:
+- Sichtbarkeit von Navigationselementen
+- Beschriftungen und Icons
+- Unsicherheit und Erwartungen
+- Vergleiche mit bekannten Apps
+- Orientierungslosigkeit
+
+Zitate:
+____________________________________________________________
+____________________________________________________________
+____________________________________________________________
+
+============================================================
+10. NACHBEFRAGUNG PRO VERSION
+============================================================
+
+Unmittelbar nach Abschluss jeder Version stellen:
+
+F1. Wie leicht fiel Ihnen die Navigation in dieser Version?
+Skala: 1 = sehr schwer, 5 = sehr leicht
+Wert: ______
+
+F2. Wie sicher haben Sie sich während der Navigation gefühlt?
+Skala: 1 = gar nicht sicher, 5 = sehr sicher
+Wert: ______
+
+F3. Wie verwirrend fanden Sie die Navigation in dieser Version?
+Skala: 1 = gar nicht verwirrend, 5 = sehr verwirrend
+Wert: ______
+
+F4. Wie frustrierend fanden Sie die Navigation in dieser Version?
+Skala: 1 = gar nicht frustrierend, 5 = sehr frustrierend
+Wert: ______
+
+F5. Gab es konkrete Elemente oder Momente, die verwirrend oder
+frustrierend waren?
+[ ] Nein
+[ ] Ja: _________________________________________________
+____________________________________________________________
+
+============================================================
+11. ABSCHLIESSENDES VERGLEICHSINTERVIEW
+============================================================
+
+Diese Fragen nach dem Abschluss aller drei Versionen stellen.
+
+F1. Welche Version hat Ihnen insgesamt am besten gefallen? Warum?
+[ ] Version 1 - Hamburger-Menü
+[ ] Version 2 - Tab Bar
+[ ] Version 3 - Content-Navigation
+
+Warum?
+____________________________________________________________
+____________________________________________________________
+
+F2. Welche Version war am leichtesten zu verstehen?
+[ ] Version 1
+[ ] Version 2
+[ ] Version 3
+
+Warum?
+____________________________________________________________
+
+F3. Welche Version war am schwierigsten zu bedienen?
+[ ] Version 1
+[ ] Version 2
+[ ] Version 3
+
+Warum?
+____________________________________________________________
+
+F4. Welche Version würden Sie in einer echten App bevorzugen?
+[ ] Version 1
+[ ] Version 2
+[ ] Version 3
+
+Warum?
+____________________________________________________________
+
+F5. Hat ein Navigationselement an bekannte Apps erinnert?
+Notizen:
+____________________________________________________________
+
+F6. Gab es ein Element, das unbekannt oder unklar wirkte?
+Notizen:
+____________________________________________________________
+
+============================================================
+12. BEOBACHTUNGSBOGEN
+============================================================
+
+Teilnehmenden-ID: ____________________
+Altersgruppe: ________________________
+Datum: _______________________________
+Versionsreihenfolge: _________________
+
+------------------------------------------------------------
+VERSION 1 / 2 / 3: ___________________
+------------------------------------------------------------
+
+Aufgabe A - Hilfe finden
+Aufgabenerfolg 0/1/2: ______
+Zeit: ______ Sekunden
+Fehlnavigationen: ______
+Zögern 0/1/2: ______
+Verwendeter Pfad: _______________________________________________
+Notizen: _______________________________________________________
+
+Aufgabe B - Einstellungen finden
+Aufgabenerfolg 0/1/2: ______
+Zeit: ______ Sekunden
+Fehlnavigationen: ______
+Zögern 0/1/2: ______
+Verwendeter Pfad: _______________________________________________
+Notizen: _______________________________________________________
+
+Aufgabe B.2 - Profil bearbeiten
+Aufgabenerfolg 0/1/2: ______
+Zeit: ______ Sekunden
+Fehlnavigationen: ______
+Zögern 0/1/2: ______
+Verwendeter Pfad: _______________________________________________
+Notizen: _______________________________________________________
+
+Aufgabe C - Item 3 öffnen
+Aufgabenerfolg 0/1/2: ______
+Zeit: ______ Sekunden
+Fehlnavigationen: ______
+Zögern 0/1/2: ______
+Verwendeter Pfad: _______________________________________________
+Notizen: _______________________________________________________
+
+Aufgabe D - Item 3 umbenennen
+Aufgabenerfolg 0/1/2: ______
+Zeit: ______ Sekunden
+Fehlnavigationen: ______
+Zögern 0/1/2: ______
+Verwendeter Pfad: _______________________________________________
+Notizen: _______________________________________________________
+
+Wischgesten-Entdeckung 0/1/2/3: ______
+
+Nachbefragungswerte:
+Leichtigkeit 1-5: ______
+Sicherheitsgefühl 1-5: ______
+Verwirrung 1-5: ______
+Frustration 1-5: ______
+Konkrete Elemente (Ja/Nein + Beschreibung):
+____________________________________________________________
+
+Wichtige Zitate:
+____________________________________________________________
+____________________________________________________________
+____________________________________________________________
+
+============================================================
+13. ABSCHLUSSSCRIPT
+============================================================
+
+Bitte laut vorlesen:
+
+"Vielen Dank - das war das Ende des Tests.
+Ihr Feedback hilft mir zu verstehen, wie unterschiedliche Nutzende
+mobile Navigation erleben.
+Die Ergebnisse werden anonymisiert und ausschließlich für die
+Bachelorarbeit verwendet."
+
+============================================================
+14. ANALYSEHINWEISE FÜR DIE THESIS
+============================================================
+
+Quantitative / deskriptive Daten:
+- Erfolgsquote pro Aufgabe und Version
+- Durchschnittliche Aufgabenzeit pro Aufgabe und Version
+- Fehlnavigationen pro Aufgabe und Version
+- Zögerungswerte pro Aufgabe und Version
+- Leichtigkeit, Sicherheitsgefühl, Verwirrung und Frustration
+  pro Version (jeweils 1-5)
+
+Qualitative Daten (Inhaltsanalyse nach Mayring):
+- Think-Aloud-Kommentare
+- Beobachtete Verwirrung und Zögern
+- Navigationsstrategien und Unterschiede in mentalen Modellen
+- Erklärungen zu Präferenzen
+- Unterschiede zwischen Generation Z und Personen im Alter 50-65
+
+Analysekategorien (deduktiv):
+- Verständlichkeit
+- Orientierung
+- Sicherheit
+- Frustration
+- Präferenz
+- Mentale Modelle
+
+Wichtige Limitation:
+Da alle Teilnehmenden alle drei Versionen testen, können trotz
+Gegenbalancierung Lerneffekte auftreten. Die Protokollierung der
+Wischgesten-Entdeckung ermöglicht eine analytische Erfassung dieses
+Effekts.
+
+Empfohlene Formulierung:
+"Um Reihenfolge- und Lerneffekte zu reduzieren, wurde die Abfolge
+der Navigationsvarianten nach einem Latin-Square-Verfahren
+gegenbalanciert. Da alle Teilnehmenden mit allen drei Versionen
+interagierten, können dennoch Transfereffekte zwischen den Varianten
+nicht vollständig ausgeschlossen werden. Dieser Aspekt wird bei der
+Interpretation der Ergebnisse berücksichtigt."

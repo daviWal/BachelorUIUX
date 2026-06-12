@@ -1,0 +1,657 @@
+MODERATOR SCRIPT — MOBILE NAVIGATION USABILITY STUDY
+Bachelor Thesis: Mobile App Navigation Across Generations
+
+Version: 2.0
+Purpose: Standardized user test script and metrics framework
+Target groups: Generation Z and users aged 50-65
+Estimated session duration: approx. 10-20 minutes per participant
+
+============================================================
+1. SESSION OVERVIEW
+============================================================
+
+Research focus:
+This study investigates how users from different age groups understand,
+use, and evaluate different mobile app navigation patterns.
+
+The study compares three navigation variants:
+
+Version 1 - Hamburger Menu
+Navigation is hidden behind a menu icon.
+
+Version 2 - Tab Bar
+Navigation is visible at the bottom of the screen.
+
+Version 3 - Content Navigation / Direct Buttons
+Navigation is shown as large buttons on the main screen.
+
+Important methodological principle:
+All three versions contain the same screens and content.
+Only the navigation structure changes.
+
+The moderator must not explain the navigation concept of any version
+before testing.
+
+============================================================
+2. COUNTERBALANCED VERSION ORDER
+============================================================
+
+To reduce learning and order effects, participants do not all start
+with the same version. Use the following Latin Square rotation:
+
+Group A: Version 1 -> Version 2 -> Version 3
+Group B: Version 2 -> Version 3 -> Version 1
+Group C: Version 3 -> Version 1 -> Version 2
+
+Recommended assignment:
+P01 = Group A
+P02 = Group B
+P03 = Group C
+P04 = Group A
+P05 = Group B
+P06 = Group C
+Continue the same pattern.
+
+Important:
+Apply this rotation separately within both age groups where possible.
+
+============================================================
+3. MODERATOR INTRODUCTION SCRIPT
+============================================================
+
+Read this aloud before the test begins:
+
+"Thank you for participating.
+This is a short usability test of a mobile app prototype.
+The goal is not to test you personally, but to understand how people
+navigate through different app structures.
+There are no right or wrong answers.
+If something feels confusing, that is valuable information for the
+study.
+
+The app is a prototype, so some content and functions are simplified.
+The session will take approximately 10 to 20 minutes.
+I will give you tasks one at a time.
+Please try to complete each task as naturally as possible."
+
+============================================================
+4. THINK-ALOUD INSTRUCTION
+============================================================
+
+Read this aloud:
+
+"While using the app, please say out loud what you are thinking.
+For example: what are you looking for, what do you expect to happen,
+or what feels unclear.
+I will not guide you toward the correct answer, but I may remind you
+to keep speaking if you go quiet."
+
+Allowed moderator prompt during tasks:
+"Please keep thinking aloud."
+
+Not allowed:
+- Do not say where to tap.
+- Do not name or point to navigation elements.
+- Do not explain the meaning of icons.
+- Do not correct wrong turns immediately.
+- Do not compare versions while the participant is still testing.
+
+============================================================
+5. CONSENT AND RECORDING SCRIPT
+============================================================
+
+Read this aloud:
+
+"I will take notes during the session.
+The app itself only records timing data for each version.
+If screen or audio recording is used, it will only be used for
+analysis in this thesis.
+Your name will not be stored in the app data.
+You can stop the test at any time without giving a reason."
+
+Then present the written consent form and ask for a signature:
+
+"Please read the consent form and sign it if you agree to participate."
+
+Record:
+[ ] Written consent obtained (signature on file)
+[ ] Declined - session ended
+
+If declined, stop the session.
+
+============================================================
+6. PRE-TEST QUESTIONS
+============================================================
+
+Ask these before handing over the phone.
+
+Q1. What kind of mobile apps do you use most often?
+Notes:
+____________________________________________________________
+____________________________________________________________
+
+Q2. How confident do you feel using smartphones?
+Scale: 1 = not confident at all, 5 = very confident
+
+1    2    3    4    5
+
+Selected value: ______
+
+Q3. When using a new app, what do you usually do first?
+Choose or describe:
+[ ] I look for visible buttons or labels
+[ ] I explore and tap around
+[ ] I use menus or icons I already know
+[ ] I ask someone for help
+[ ] Other: _______________________________________________
+
+Q4. Do you often use swipe gestures in apps?
+[ ] Yes, often
+[ ] Sometimes
+[ ] Rarely
+[ ] No / not sure
+
+Notes:
+____________________________________________________________
+
+============================================================
+7. TASK SET
+============================================================
+
+Important:
+- Give one task at a time.
+- Do not show the full task list to the participant.
+- Start each version from that version's home/start screen.
+- All five tasks are completed in every version.
+- Do not reorder tasks within a session.
+
+------------------------------------------------------------
+TASK A - FIND HELP
+------------------------------------------------------------
+
+Instruction to participant (read aloud):
+"Please find the section where you would get help with the app."
+
+Task type: Interpretive / 1-step
+Success state: Help screen is visible.
+Primary metric: Can the participant discover Help without guidance?
+
+Moderator notes:
+- Observe whether participant scans visible options first.
+- Version 1: note whether participant identifies the hamburger icon.
+- Version 2: note whether participant uses the bottom tab bar.
+- Version 3: note whether participant uses the large Help button.
+
+------------------------------------------------------------
+TASK B - FIND SETTINGS
+------------------------------------------------------------
+
+Instruction to participant (read aloud):
+"Please find the section where you can change app settings."
+
+Task type: Interpretive / 1-step
+Success state: Settings screen is visible.
+Primary metric: Can the participant locate app configuration?
+
+Moderator notes:
+- Watch for confusion between Profile and Settings.
+- Note whether participant reads all options before tapping.
+- Note whether the Settings label is immediately understood.
+
+------------------------------------------------------------
+TASK B.2 - EDIT PROFILE
+------------------------------------------------------------
+
+Instruction to participant (read aloud):
+"Please edit your profile name (update your personal information)."
+
+Task type: 2-step / navigation + in-screen action
+Success state: The edit prompt appears; name has been changed and
+the participant has tapped Save.
+Primary metric: Can the participant navigate to Profile and complete
+an in-screen editing action?
+
+Moderator notes:
+- Note whether participant confuses Profile with Settings.
+- Note whether the edit action within Profile is discoverable.
+- Note whether the Save button is found and tapped.
+
+------------------------------------------------------------
+TASK C - OPEN ITEM 3
+------------------------------------------------------------
+
+Instruction to participant (read aloud):
+"Please find the list of items and open Item 3."
+
+Task type: Specific / 2-step
+Success state: Detail view of Item 3 is visible.
+Primary metric: Can the participant navigate to a list and select
+a named target?
+
+Moderator notes:
+- Note wrong turns before finding the Items section.
+- Note whether participant understands Item 3 is inside Items.
+- Note whether back navigation causes confusion after opening
+  the detail view.
+
+------------------------------------------------------------
+TASK D - EDIT ITEM 3
+------------------------------------------------------------
+
+Instruction to participant (read aloud):
+"Please find Item 3 and change its name."
+
+Task type: Specific / multi-step / navigation + in-screen action
+Success state: The edit view for Item 3 is open.
+
+Recommended success definition:
+Success = participant reaches the edit interface for Item 3.
+Typing completion is not required.
+
+Primary metric: Can the participant move from navigation into a
+deeper object-specific action?
+
+Moderator notes:
+- This task tests navigation depth, not typing skill.
+- If participant opens Item 3 but cannot find Edit: partial success.
+- If participant edits the wrong item: wrong target, partial success.
+- Note whether the edit function is visible, expected, or surprising.
+- Task D depends on Task C: if Task C was not completed, navigate
+  the participant to Item 3 manually before starting Task D timing.
+  Record Task C as failed.
+
+============================================================
+8. OPTIONAL SCENARIO TASKS
+============================================================
+
+Use only if session time allows, or during a pilot round.
+Do not combine all five main tasks and all scenario tasks in a short
+session - this causes fatigue, especially in the 50-65 group.
+
+Scenario 1 - Help need
+Instruction:
+"Imagine you are stuck in the app and need help. Where would you go?"
+Success state: Help screen visible.
+
+Scenario 2 - App behavior
+Instruction:
+"Imagine you want the app to behave differently. Where would you go?"
+Success state: Settings screen visible.
+
+Scenario 3 - Item browsing
+Instruction:
+"Imagine you want to browse the items and open one in more detail."
+Success state: Any item detail view visible.
+
+Scenario 4 - Personal data
+Instruction:
+"Imagine you want to change something about your personal information.
+Where would you go?"
+Success state: Profile screen or Edit Profile interface visible.
+
+============================================================
+9. METRICS FRAMEWORK
+============================================================
+
+Use the following definitions consistently across all participants
+and all versions.
+
+------------------------------------------------------------
+9.1 TASK SUCCESS
+------------------------------------------------------------
+
+Success = participant reaches the defined success state without
+moderator guidance.
+
+Partial success = participant reaches the correct main section but
+not the final target state.
+Examples:
+- Opens Items but not Item 3.
+- Opens Item 3 but cannot find Edit.
+- Opens Profile but does not open Edit Profile.
+
+Failure = participant does not reach the target state or gives up.
+
+Record as:
+    2 = Success
+    1 = Partial success
+    0 = Failure
+
+------------------------------------------------------------
+9.2 TIME ON TASK
+------------------------------------------------------------
+
+Start timing when the moderator finishes reading the task
+instruction. Stop timing when the success state is reached or when
+the participant gives up.
+
+Record time in seconds. If only approximate timing is possible,
+mark it as approximate.
+
+------------------------------------------------------------
+9.3 WRONG TURNS
+------------------------------------------------------------
+
+A wrong turn is any intentional tap that moves the participant away
+from the expected route for the task.
+
+Examples:
+- Tapping Profile while looking for Settings.
+- Opening Help while trying to find Items.
+- Opening Item 2 instead of Item 3.
+
+Do not count:
+- Looking around without tapping.
+- Scrolling that does not change screen.
+- Reading labels.
+- Accidental touch immediately self-corrected by the participant.
+
+Record number of wrong turns per task.
+
+------------------------------------------------------------
+9.4 HESITATION
+------------------------------------------------------------
+
+A hesitation is a visible pause before action.
+
+0 = No hesitation
+    Participant acts within about 2 seconds.
+
+1 = Mild hesitation
+    Participant pauses for about 3-5 seconds, scans the interface,
+    or says a short uncertainty phrase.
+
+2 = Strong hesitation
+    Participant pauses for more than 5 seconds, repeatedly scans,
+    verbalizes confusion, or seems unsure what to do next.
+
+Hesitation is rated based on the moderator's observation of the
+think-aloud protocol and video recording. Automated real-time
+measurement of individual action pauses is not provided.
+
+Examples of hesitation language:
+- "Where is it?"
+- "I don't know where to go."
+- "Maybe here?"
+- "I would expect it somewhere else."
+
+------------------------------------------------------------
+9.5 PERCEIVED EASE AND CONFIDENCE
+------------------------------------------------------------
+
+Captured via per-version post-test questions (see Section 10):
+
+Perceived ease:    "How easy was the navigation?" (1-5)
+Confidence:        "How confident did you feel?" (1-5)
+
+Record values in the observation sheet after each version.
+
+------------------------------------------------------------
+9.6 CONFUSION AND FRUSTRATION
+------------------------------------------------------------
+
+Captured as two separate constructs via per-version post-test
+questions (see Section 10):
+
+Confusion:    "How confusing was the navigation?" (1-5)
+Frustration:  "How frustrating was the navigation?" (1-5)
+
+Both are rated on a 1-5 scale. A navigation element can feel
+unclear without necessarily triggering emotional frustration;
+recording them separately allows independent analysis.
+
+Additional qualitative detail is captured via:
+"Were there specific elements or moments that felt confusing or
+frustrating?" (Yes/No + description)
+
+------------------------------------------------------------
+9.7 NAVIGATION PATH
+------------------------------------------------------------
+
+Record the main path used.
+
+Examples:
+- Hamburger menu -> Help
+- Tab bar -> Settings
+- Main menu button -> Items -> Item 3
+- Swipe -> Items -> Item 3
+- Wrong path: Profile -> Home -> Items -> Item 3
+
+Path notes:
+____________________________________________________________
+____________________________________________________________
+
+------------------------------------------------------------
+9.8 GESTURE DISCOVERY
+------------------------------------------------------------
+
+The app contains undisclosed horizontal swipe navigation between
+Home, Items, and Profile. Do not explain this before testing.
+
+Record if participant discovers or attempts swipe gestures:
+
+0 = No swipe attempt
+1 = Accidental attempt - participant shows immediate irritation
+    after the gesture, does not connect it to navigation, and
+    does not repeat it
+2 = Intentional attempt
+3 = Gesture discovered and reused
+
+If a participant discovers the gesture in one version, note whether
+they transfer it to later versions.
+
+Notes:
+____________________________________________________________
+____________________________________________________________
+
+------------------------------------------------------------
+9.9 VERBAL OBSERVATIONS
+------------------------------------------------------------
+
+Record important participant quotes during tasks.
+Especially note comments about:
+- visibility of navigation elements
+- labels and icons
+- uncertainty and expectations
+- comparisons with familiar apps
+- feeling lost
+
+Quotes:
+____________________________________________________________
+____________________________________________________________
+____________________________________________________________
+
+============================================================
+10. PER-VERSION POST-TEST QUESTIONS
+============================================================
+
+Ask these immediately after the participant finishes each version.
+
+Q1. How easy was it to navigate in this version?
+Scale: 1 = very difficult, 5 = very easy
+Value: ______
+
+Q2. How confident did you feel while navigating this version?
+Scale: 1 = not confident at all, 5 = very confident
+Value: ______
+
+Q3. How confusing did you find the navigation in this version?
+Scale: 1 = not confusing at all, 5 = very confusing
+Value: ______
+
+Q4. How frustrating did you find the navigation in this version?
+Scale: 1 = not frustrating at all, 5 = very frustrating
+Value: ______
+
+Q5. Were there specific elements or moments that felt confusing or
+frustrating?
+[ ] No
+[ ] Yes: ________________________________________________
+____________________________________________________________
+
+============================================================
+11. FINAL COMPARISON QUESTIONS
+============================================================
+
+Ask these after all three versions are completed.
+
+Q1. Which version did you prefer overall? Why?
+[ ] Version 1 - Hamburger Menu
+[ ] Version 2 - Tab Bar
+[ ] Version 3 - Content Navigation
+
+Why?
+____________________________________________________________
+____________________________________________________________
+
+Q2. Which version felt easiest to understand?
+[ ] Version 1
+[ ] Version 2
+[ ] Version 3
+
+Why?
+____________________________________________________________
+
+Q3. Which version felt most difficult to use?
+[ ] Version 1
+[ ] Version 2
+[ ] Version 3
+
+Why?
+____________________________________________________________
+
+Q4. Which version would you prefer in a real app?
+[ ] Version 1
+[ ] Version 2
+[ ] Version 3
+
+Why?
+____________________________________________________________
+
+Q5. Did any navigation element feel familiar from apps you already
+use?
+Notes:
+____________________________________________________________
+
+Q6. Did any navigation element feel unfamiliar or unclear?
+Notes:
+____________________________________________________________
+
+============================================================
+12. MODERATOR OBSERVATION SHEET
+============================================================
+
+Participant ID: ______________________
+Age group: ___________________________
+Date: ________________________________
+Version order: _______________________
+
+------------------------------------------------------------
+VERSION 1 / 2 / 3: ___________________
+------------------------------------------------------------
+
+Task A - Help
+Success score 0/1/2: ______
+Time: ______ seconds
+Wrong turns: ______
+Hesitation 0/1/2: ______
+Path used: ______________________________________________
+Notes: __________________________________________________
+
+Task B - Settings
+Success score 0/1/2: ______
+Time: ______ seconds
+Wrong turns: ______
+Hesitation 0/1/2: ______
+Path used: ______________________________________________
+Notes: __________________________________________________
+
+Task B.2 - Edit Profile
+Success score 0/1/2: ______
+Time: ______ seconds
+Wrong turns: ______
+Hesitation 0/1/2: ______
+Path used: ______________________________________________
+Notes: __________________________________________________
+
+Task C - Open Item 3
+Success score 0/1/2: ______
+Time: ______ seconds
+Wrong turns: ______
+Hesitation 0/1/2: ______
+Path used: ______________________________________________
+Notes: __________________________________________________
+
+Task D - Edit Item 3
+Success score 0/1/2: ______
+Time: ______ seconds
+Wrong turns: ______
+Hesitation 0/1/2: ______
+Path used: ______________________________________________
+Notes: __________________________________________________
+
+Gesture discovery score 0/1/2/3: ______
+
+Post-test scores:
+Perceived ease 1-5: ______
+Confidence 1-5: ______
+Confusion 1-5: ______
+Frustration 1-5: ______
+Specific elements (Yes/No + description):
+____________________________________________________________
+
+Key quotes:
+____________________________________________________________
+____________________________________________________________
+____________________________________________________________
+
+============================================================
+13. CLOSING SCRIPT
+============================================================
+
+Read this aloud:
+
+"Thank you, that is the end of the test.
+Your feedback will help me understand how different users experience
+mobile navigation.
+The results will be anonymized and used only for the bachelor thesis."
+
+============================================================
+14. ANALYSIS NOTES FOR THESIS WRITE-UP
+============================================================
+
+Quantitative/descriptive data:
+- Completion rate per task and version
+- Average task time per task and version
+- Wrong turns per task and version
+- Hesitation scores per task and version
+- Perceived ease, confidence, confusion, and frustration ratings
+  per version (1-5 each)
+
+Qualitative data (Mayring content analysis):
+- Think-aloud comments
+- Observed confusion and hesitation
+- Navigation strategies and mental model differences
+- Preference explanations
+- Differences between Generation Z and 50-65 participants
+
+Analysis categories (deductive):
+- Comprehensibility (Verstandlichkeit)
+- Orientation (Orientierung)
+- Confidence (Sicherheit)
+- Frustration (Frustration)
+- Preference (Praferenz)
+- Mental models (Mentale Modelle)
+
+Important limitation to mention:
+Because all participants test all three versions, learning effects
+may occur despite counterbalancing. The gesture discovery score
+allows this effect to be tracked analytically.
+
+Recommended phrasing:
+"To reduce order and learning effects, the sequence of navigation
+variants was counterbalanced across participants using a Latin Square
+design. Nevertheless, because all participants interacted with all
+three versions, some transfer of knowledge between variants may have
+occurred. This limitation is considered in the interpretation of
+the results."

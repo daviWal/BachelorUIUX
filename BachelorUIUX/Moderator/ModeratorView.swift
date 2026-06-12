@@ -10,8 +10,8 @@ import SwiftUI
 struct ModeratorView: View {
     @ObservedObject var sessionManager: SessionManager
     @Environment(\.dismiss) private var dismiss
-
-    private let ageGroups = ["Gen Z", "50–65"]
+    // group a = gen z group b = 50-65
+    private let ageGroups = ["Group A", "Group B"]
     private let dateFormatter: DateFormatter = {
         let f = DateFormatter()
         f.timeStyle = .medium
