@@ -1,0 +1,64 @@
+//
+//  HelpView.swift
+//  BachelorUIUX
+//
+//  Created by David Walitza on 02.04.2026.
+//
+
+import SwiftUI
+
+struct HelpView: View {
+    var body: some View {
+        List {
+            Section("Getting Started") {
+                helpRow(
+                    question: "How do I navigate the app?",
+                    answer: "Use the navigation controls to move between screens."
+                )
+                helpRow(
+                    question: "How do I find my profile?",
+                    answer: "Access your profile through the navigation menu or tab bar."
+                )
+            }
+            Section("Items"){
+                helpRow(question: "How do i edit an item?", answer: "Open the detail view of an item. There you can see its status which you can change by tapping it, or change its name by tapping the pencil icon on the top.")
+                helpRow(question: "How do i add an item to favorites?", answer: "Open the detail view of an item, then tap the star icon on the top.")
+            }
+            Section("Account") {
+                helpRow(
+                    question: "How do I edit my profile?",
+                    answer: "Go to Profile and tap Edit Profile."
+                )
+                helpRow(
+                    question: "How do I change my settings?",
+                    answer: "Open the Settings screen from the navigation menu. Then press any of the switches."
+                )
+            }
+            Section("Contact") {
+                helpRow(
+                    question: "Need more help?",
+                    answer: "Contact us at support@example.com"
+                )
+            }
+        }
+        .background(Color(.systemBackground))
+    }
+
+    private func helpRow(question: String, answer: String) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(question)
+                .fontWeight(.semibold)
+            Text(answer)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .padding(.vertical, 4)
+    }
+}
+
+#Preview {
+    NavigationStack {
+        HelpView()
+            .navigationTitle("Help")
+    }
+}
