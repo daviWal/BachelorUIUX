@@ -35,7 +35,7 @@ struct TabBarContentView: View {
                     .tag(4)
             }
             .simultaneousGesture(
-                DragGesture(minimumDistance: 20)
+                DragGesture(minimumDistance: 30)
                     .onEnded { value in
                         let horizontalAmount = value.translation.width
                         let threshold: CGFloat = 50

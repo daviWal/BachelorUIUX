@@ -31,7 +31,7 @@ struct MainMenuContentView: View {
             }
             .contentShape(Rectangle())
             .simultaneousGesture(
-                DragGesture(minimumDistance: 20)
+                DragGesture(minimumDistance: 30)
                     .onEnded { value in
                         handleSwipe(value)
                     }

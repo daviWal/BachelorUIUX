@@ -1,7 +1,7 @@
 MODERATORSKRIPT — USABILITY-STUDIE MOBILE NAVIGATION
 Bachelorarbeit: Mobile App-Navigation im Generationsvergleich
 
-Version: 2.0
+Version: 2.1
 Zweck: Standardisiertes Testskript und Metriken-Framework
 Zielgruppen: Generation Z und Personen im Alter von 50 bis 65 Jahren
 Geschätzte Sitzungsdauer: ca. 10 bis 20 Minuten pro Teilnehmende:r
@@ -29,8 +29,8 @@ Wichtiger methodischer Grundsatz:
 Alle drei Versionen enthalten dieselben Bildschirme und Inhalte.
 Nur die Navigationsstruktur unterscheidet sich.
 
-Der Moderator / die Moderatorin darf das Navigationskonzept keiner
-Version vor dem Test erklären. 
+Der Moderator darf das Navigationskonzept keiner
+Version vor dem Test erklären.
 
 ============================================================
 2. GEGENBALANCIERTE VERSIONSREIHENFOLGE
@@ -60,7 +60,6 @@ Die Zuteilung wird innerhalb beider Altersgruppen separat angewendet.
 3. EINFÜHRUNGSSCRIPT DES MODERATORS / DER MODERATORIN
 ============================================================
 
-Bitte laut vorlesen, bevor der Test beginnt:
 
 "Vielen Dank für Ihre Teilnahme.
 Dies ist ein kurzer Usability-Test mit einem App-Prototyp.
@@ -81,7 +80,6 @@ bearbeiten."
 4. ANWEISUNG ZUM LAUTEN DENKEN (THINK-ALOUD)
 ============================================================
 
-Bitte laut vorlesen:
 
 "Bitte sagen Sie während der Nutzung der App laut, was Sie denken.
 Zum Beispiel: Was suchen Sie gerade? Was erwarten Sie? Was ist
@@ -103,7 +101,6 @@ Nicht erlaubt:
 5. EINVERSTÄNDNISERKLÄRUNG
 ============================================================
 
-Bitte laut vorlesen:
 
 "Ich werde während der Sitzung Notizen machen.
 Die App selbst erfasst ausschließlich Zeitdaten pro Version.
@@ -185,9 +182,7 @@ Primäre Metrik: Findet die Testperson den Hilfebereich ohne Anleitung?
 
 Moderatorhinweise:
 - Beobachten, ob die Testperson zuerst sichtbare Optionen scannt.
-- Version 1: Erkennt die Testperson das Hamburger-Symbol?
-- Version 2: Nutzt die Testperson die untere Tab-Leiste?
-- Version 3: Nutzt die Testperson die große Hilfe-Schaltfläche?
+
 
 ------------------------------------------------------------
 AUFGABE B - EINSTELLUNGEN FINDEN
@@ -204,7 +199,7 @@ Primäre Metrik: Kann die Testperson die App-Konfiguration finden?
 Moderatorhinweise:
 - Auf Verwechslung von Profil und Einstellungen achten.
 - Liest die Testperson alle Optionen, bevor sie tippt?
-- Wird die Beschriftung "Einstellungen" sofort verstanden?
+- Wird die Beschriftung "Settings" sofort verstanden?
 
 ------------------------------------------------------------
 AUFGABE B.2 - PROFIL BEARBEITEN
@@ -220,10 +215,7 @@ geändert und auf "Speichern" gedrückt.
 Primäre Metrik: Kann die Testperson zum Profil navigieren und eine
 Bearbeitungsaktion abschließen?
 
-Moderatorhinweise:
-- Verwechselt die Testperson Profil mit Einstellungen?
-- Ist die Bearbeitungsaktion innerhalb des Profils auffindbar?
-- Wird die Schaltfläche "Speichern" gefunden und gedrückt?
+
 
 ------------------------------------------------------------
 AUFGABE C - ITEM 3 ÖFFNEN
@@ -237,11 +229,6 @@ Erfolgszustand: Detailansicht von Item 3 ist sichtbar.
 Primäre Metrik: Kann die Testperson eine Liste navigieren und ein
 benanntes Ziel auswählen?
 
-Moderatorhinweise:
-- Fehlnavigationen vor dem Erreichen des Item-Bereichs notieren.
-- Versteht die Testperson, dass Item 3 im Items-Bereich liegt?
-- Verursacht die Rücknavigation nach dem Öffnen der Detailansicht
-  Verwirrung?
 
 ------------------------------------------------------------
 AUFGABE D - ITEM 3 UMBENENNEN
@@ -260,49 +247,6 @@ Abschluss der Texteingabe ist nicht erforderlich.
 Primäre Metrik: Kann die Testperson von der Navigation in eine
 tiefer liegende objektspezifische Aktion wechseln?
 
-Moderatorhinweise:
-- Diese Aufgabe testet Navigationstiefe, nicht Tippfähigkeit.
-- Item 3 gefunden, aber Bearbeiten nicht gefunden: Teilerfolg.
-- Falsches Item bearbeitet: falsches Ziel, Teilerfolg.
-- Ist die Bearbeitungsfunktion sichtbar, erwartet oder überraschend?
-- Aufgabe D setzt Aufgabe C voraus: Gelingt C nicht, navigiert der
-  Moderator / die Moderatorin die Testperson manuell zur Detailansicht,
-  bevor die Zeitmessung für D beginnt. Aufgabe C wird als Misserfolg
-  gewertet.
-
-============================================================
-8. OPTIONALE SZENARIOAUFGABEN
-============================================================
-
-Nur verwenden, wenn die Sitzungszeit ausreicht oder in einem
-Pilotdurchlauf. Nicht alle fünf Hauptaufgaben und alle Szenarien
-in einer kurzen Sitzung kombinieren - das führt zu Erschöpfung,
-insbesondere bei der Gruppe 50-65.
-
-Szenario 1 - Hilfebedarf
-Anweisung:
-"Stellen Sie sich vor, Sie kommen in der App nicht weiter und
-brauchen Hilfe. Wo würden Sie nachschauen?"
-Erfolgszustand: Hilfe-Bildschirm sichtbar.
-
-Szenario 2 - App-Verhalten
-Anweisung:
-"Stellen Sie sich vor, Sie möchten das Verhalten der App ändern.
-Wo würden Sie das einstellen?"
-Erfolgszustand: Einstellungs-Bildschirm sichtbar.
-
-Szenario 3 - Items durchsuchen
-Anweisung:
-"Stellen Sie sich vor, Sie möchten die Items durchsehen und eines
-genauer anschauen."
-Erfolgszustand: Eine beliebige Item-Detailansicht ist sichtbar.
-
-Szenario 4 - Persönliche Daten
-Anweisung:
-"Stellen Sie sich vor, Sie möchten etwas an Ihren persönlichen
-Informationen ändern. Wo würden Sie das tun?"
-Erfolgszustand: Profil-Bildschirm oder Profil-Bearbeitungsansicht
-sichtbar.
 
 ============================================================
 9. METRIKEN-FRAMEWORK
@@ -333,19 +277,7 @@ Bewertung:
 0 = Misserfolg
 
 ------------------------------------------------------------
-9.2 AUFGABENZEIT
-------------------------------------------------------------
-
-Zeitmessung beginnt, wenn der Moderator / die Moderatorin die
-Aufgabenanweisung fertig vorgelesen hat.
-Zeitmessung endet, wenn der Erfolgszustand erreicht wird oder die
-Testperson aufgibt.
-
-Zeit in Sekunden notieren. Falls nur ungefähre Angaben möglich sind,
-als "ca." kennzeichnen.
-
-------------------------------------------------------------
-9.3 FEHLNAVIGATIONEN
+9.2 FEHLNAVIGATIONEN
 ------------------------------------------------------------
 
 Eine Fehlnavigation ist jedes intentionale Tippen, das die Testperson
@@ -365,7 +297,7 @@ Nicht zählen:
 Anzahl der Fehlnavigationen pro Aufgabe notieren.
 
 ------------------------------------------------------------
-9.4 ZÖGERN
+9.3 ZÖGERN
 ------------------------------------------------------------
 
 Zögern ist eine sichtbare Pause vor einer Aktion.
@@ -393,7 +325,7 @@ Beispiele für Zögerungssprache:
 - "Das würde ich woanders erwarten."
 
 ------------------------------------------------------------
-9.5 WAHRGENOMMENE LEICHTIGKEIT UND SICHERHEITSGEFÜHL
+9.4 WAHRGENOMMENE LEICHTIGKEIT UND SICHERHEITSGEFÜHL
 ------------------------------------------------------------
 
 Wird über die Nachbefragung pro Version erfasst (siehe Abschnitt 10):
@@ -404,7 +336,7 @@ Sicherheitsgefühl:  "Wie sicher haben Sie sich gefühlt?" (1-5)
 Werte nach jeder Version im Beobachtungsbogen notieren.
 
 ------------------------------------------------------------
-9.6 VERWIRRUNG UND FRUSTRATION
+9.5 VERWIRRUNG UND FRUSTRATION
 ------------------------------------------------------------
 
 Werden als zwei separate Konstrukte über die Nachbefragung pro
@@ -423,7 +355,7 @@ Zusätzliche qualitative Details werden erfasst über:
 frustrierend waren?" (Ja/Nein + Beschreibung)
 
 ------------------------------------------------------------
-9.7 NAVIGATIONSPFAD
+9.6 NAVIGATIONSPFAD
 ------------------------------------------------------------
 
 Verwendeten Hauptpfad notieren.
@@ -440,7 +372,7 @@ ____________________________________________________________
 ____________________________________________________________
 
 ------------------------------------------------------------
-9.8 ENTDECKUNG DER WISCHGESTE
+9.7 ENTDECKUNG DER WISCHGESTE
 ------------------------------------------------------------
 
 Die App enthält eine nicht angezeigte horizontale Wischgeste zwischen
@@ -463,7 +395,7 @@ ____________________________________________________________
 ____________________________________________________________
 
 ------------------------------------------------------------
-9.9 VERBALE BEOBACHTUNGEN
+9.8 VERBALE BEOBACHTUNGEN
 ------------------------------------------------------------
 
 Wichtige Aussagen der Testperson während der Aufgaben notieren.
@@ -475,9 +407,7 @@ Besonders auf Kommentare zu folgenden Themen achten:
 - Orientierungslosigkeit
 
 Zitate:
-____________________________________________________________
-____________________________________________________________
-____________________________________________________________
+
 
 ============================================================
 10. NACHBEFRAGUNG PRO VERSION
@@ -626,7 +556,6 @@ ____________________________________________________________
 13. ABSCHLUSSSCRIPT
 ============================================================
 
-Bitte laut vorlesen:
 
 "Vielen Dank - das war das Ende des Tests.
 Ihr Feedback hilft mir zu verstehen, wie unterschiedliche Nutzende
@@ -667,10 +596,4 @@ Gegenbalancierung Lerneffekte auftreten. Die Protokollierung der
 Wischgesten-Entdeckung ermöglicht eine analytische Erfassung dieses
 Effekts.
 
-Empfohlene Formulierung:
-"Um Reihenfolge- und Lerneffekte zu reduzieren, wurde die Abfolge
-der Navigationsvarianten nach einem Latin-Square-Verfahren
-gegenbalanciert. Da alle Teilnehmenden mit allen drei Versionen
-interagierten, können dennoch Transfereffekte zwischen den Varianten
-nicht vollständig ausgeschlossen werden. Dieser Aspekt wird bei der
-Interpretation der Ergebnisse berücksichtigt."
+
