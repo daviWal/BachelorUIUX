@@ -117,7 +117,7 @@ struct MainMenuContentView: View {
         guard abs(horizontalAmount) > abs(verticalAmount) else { return }
 
         if horizontalAmount < -threshold {
-            selectedScreen = min(selectedScreen + 1, 2)
+            selectedScreen = min(selectedScreen + 1, 4)
         } else if horizontalAmount > threshold {
             selectedScreen = max(selectedScreen - 1, 0)
         }

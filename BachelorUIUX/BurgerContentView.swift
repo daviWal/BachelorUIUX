@@ -88,7 +88,7 @@ struct BurgerContentView: View {
     }
 
     private func goToNextScreen() {
-        selectedScreen = min(selectedScreen + 1, 2)
+        selectedScreen = min(selectedScreen + 1, 4)
     }
 
     private func goToPreviousScreen() {
